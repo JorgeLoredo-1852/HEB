@@ -1,0 +1,14 @@
+.container {
+    margin-bottom: 6rem;
+    position: relative;
+    z-index: 2;
+  }
+
+.navbarBtnActive{
+  color: var(--red-main) !important;
+}
+
+.navbarBtn:active{
+  color: var(--red-main) !important;
+  
+}
