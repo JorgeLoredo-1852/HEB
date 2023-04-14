@@ -12,3 +12,21 @@
   color: var(--red-main) !important;
   
 }
+
+
+@media (min-width: 640px) {
+  .title {
+    font-size: 3rem /* 48px */;
+    line-height: 1;
+  }
+
+  .subTitle {
+    margin-top: 1.25rem;
+    max-width: 36rem;
+  }
+
+  .buttonWrapper {
+    display: flex;
+    margin-top: 2rem;
+  }
+}

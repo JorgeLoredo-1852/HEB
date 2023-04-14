@@ -8,7 +8,7 @@ export const tabs = [
         label: "Inicio",
         value: "home",
         icon: <HomeIcon/>,
-        link: "/home"
+        link: "/"
     },
     {
         label: "Buscar",
