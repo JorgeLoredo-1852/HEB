@@ -1,5 +1,11 @@
 :root{
   --red-main: #DD2B22;
+  --red-bg: #FFF2F2;
+  --red-light: rgba(#DD2B22, 0.65);
+  --grey-light: rgba(0,0,0,0.33);
+  --black: #000;
+  --white: #fff;
+
 }
 
   /** 

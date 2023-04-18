@@ -1,5 +1,11 @@
+import ARComponents from "@/AR/ARComponents"
+
 const Prizes = () => {
-    return (<div>Prizes</div>)
+    return (
+    <>
+        <ARComponents/>
+    </>
+    )
 }
 
 export default Prizes
