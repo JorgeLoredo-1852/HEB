@@ -6,10 +6,7 @@ const Receta = () => {
 
     return (
         <div>
-            Receta {/*router.query.slug*/}
-            <Link href = "/">
-                Back to home
-            </Link>
+            <HeaderImg imagen = "/images/burger.jpg" height = "500px" texto = "Hamburguesa"/>
         </div>)
 }
 
