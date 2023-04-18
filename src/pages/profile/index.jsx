@@ -1,6 +1,6 @@
 import UserContext from "@/hooks/UserContext"
-import { useContext } from "react"
-
+import { Component, useContext } from "react"
+import headerImg from "@/molecules/header/HeaderImg"
 
 const Profile = () => {
 
@@ -15,7 +15,7 @@ const Profile = () => {
     */
    
 
-    return (<div>Profile</div>)
+    return (<div>Profile </div> )
 }
 
 export default Profile
