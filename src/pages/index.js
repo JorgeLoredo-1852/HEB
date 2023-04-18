@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '@/styles/Home.module.css'
+import PopularRecipes from '@/components/popularRecipes/popularRecipes'
 
 export default function Home() {
 
@@ -13,16 +14,11 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <div className={styles.center}>
-          <Image
-            className={styles.logo}
-            src="/heb.png"
-            alt="Next.js Logo"
-            width={180}
-            height={37}
-            priority
-          />
-        </div>
+
+        
+        <PopularRecipes/>
+        
+
       </main>
     </>
   )
