@@ -1,102 +1,49 @@
-import * as React from 'react';
+import React from 'react';
 import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
-import AccountCircle from '@mui/icons-material/AccountCircle';
-import Switch from '@mui/material/Switch';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormGroup from '@mui/material/FormGroup';
-import MenuItem from '@mui/material/MenuItem';
-import Menu from '@mui/material/Menu';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import ListAltIcon from '@mui/icons-material/ListAlt';
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 
-export default function MenuAppBar() {
-  const [auth, setAuth] = React.useState(true);
-  const [anchorEl, setAnchorEl] = React.useState(null);
 
-  const handleChange = (event) => {
-    setAuth(event.target.checked);
+const MyAppBar = ({ showBackButton, showListButton, listLink, backLink }) => {
+  const [value, setValue] = useState('/');
+  const router = useRouter();
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
   };
-
-  const handleMenu = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
+  const handleClick = (link) => {
+    router.push(link);
   };
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <FormGroup>
-        <FormControlLabel
-          control={
-            <Switch
-              checked={auth}
-              onChange={handleChange}
-              aria-label="login switch"
-            />
-          }
-          label={auth ? 'Logout' : 'Login'}
-        />
-      </FormGroup>
-      <AppBar position="static" color='secondary'>
-        <Toolbar sx={{ justifyContent: 'center'}}>
-          <Box  sx={{
-            position: "absolute",
-            display: "flex",
-            alignItems: "center",
-          }}>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
+    <AppBar position="static" color="secondary" sx={{ backgroundColor: '#DD2B22' }}>
+      <Toolbar>
+        {/* Back Button */}
+        {showBackButton && (
+          <IconButton edge="start" color="inherit" aria-label="back" onClick={() => handleClick(backLink)}>
+            <ArrowBackIcon />
           </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Photos
-          </Typography>
-          {auth && (
-            <div>
-              <IconButton
-                size="large"
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={handleMenu}
-                color="inherit"
-              >
-                <AccountCircle />
-              </IconButton>
-              <Menu
-                id="menu-appbar"
-                anchorEl={anchorEl}
-                anchorOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                open={Boolean(anchorEl)}
-                onClose={handleClose}
-              >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
-              </Menu>
-            </div>
-          )}
+        )}
 
-          </Box>
-        </Toolbar>
-      </AppBar>
-    </Box>
+        {/* Centered Logo */}
+        <Box align="center" sx={{ flexGrow: 1 }}>
+          <img src="https://mexicoxport.com/wp-content/uploads/2019/11/h-e-b-abre-en-monterrey-una-tienda-exclusiva-para-repartidores-de-aplicaciones.png" alt="Your Logo" height={32} />
+        </Box>
+
+        {/* List Button */}
+        {showListButton && (
+          <IconButton edge="end" color="inherit" aria-label="list" onClick={() => handleClick(listLink)}>
+            <ListAltIcon />
+          </IconButton>
+        )}
+      </Toolbar>
+    </AppBar>
   );
-}
+};
+
+export default MyAppBar;

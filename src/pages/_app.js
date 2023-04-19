@@ -10,7 +10,7 @@ export default function App({ Component, pageProps }) {
   return (
     <UserContext.Provider>
       <main className={poppins.className}>
-        <AppBarHeader/>
+        <AppBarHeader showBackButton='true' showListButton='true' listLink='/search' backLink='/search'/>
         <Component {...pageProps} />
         <Navbar/>
       </main>
