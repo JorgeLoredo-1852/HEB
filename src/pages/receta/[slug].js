@@ -9,6 +9,7 @@ import IconButton from '@mui/joy/IconButton';
 import AddCircleRoundedIcon from '@mui/icons-material/AddCircleRounded';
 import HeaderImg from "@/molecules/header/HeaderImg";
 import styles from "./receta.module.css";
+import RecipeTabs from '@/molecules/recipeTabs/RecipeTabs';
 
 const pasosData = [
     {
@@ -222,11 +223,19 @@ function PasosComponent(props) {
 }
 
 const Receta = () => {
+    const [tab, setTab] = useState(0)
+
+    const handleChange = (val) => {
+        setTab(val)
+    }
+
     return (
       <div>
-        <HeaderImg imagen = "/images/burger.jpg" height = "500px" texto = "Hamburguesa"/>
-        <FoodListComponent foodLists={itemData} />
-        <PasosComponent pasosList={pasosData} />
+        <HeaderImg imagen = "/images/burger.jpg" height = "240px" texto = "Hamburguesa"/>
+        <RecipeTabs handleChange = {handleChange}/>
+        {
+            tab == 0 ?  <FoodListComponent foodLists={itemData} /> : <PasosComponent pasosList={pasosData} />
+        }
       </div>)
 }
 
