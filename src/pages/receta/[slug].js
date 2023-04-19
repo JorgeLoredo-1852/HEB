@@ -7,6 +7,7 @@ import Stack from '@mui/joy/Stack';
 import ListDivider from '@mui/joy/ListDivider';
 import IconButton from '@mui/joy/IconButton';
 import AddCircleRoundedIcon from '@mui/icons-material/AddCircleRounded';
+import HeaderImg from "@/molecules/header/HeaderImg";
 
 const itemData = [
     {
