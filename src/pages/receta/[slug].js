@@ -1,13 +1,14 @@
 import { Typography, Box } from '@mui/material';
 import List from '@mui/joy/List';
 import ListItem from '@mui/joy/ListItem';
-import React from 'react';
+import React, { useState } from 'react';
 import ListItemDecorator from '@mui/joy/ListItemDecorator';
 import Stack from '@mui/joy/Stack';
 import ListDivider from '@mui/joy/ListDivider';
 import IconButton from '@mui/joy/IconButton';
 import AddCircleRoundedIcon from '@mui/icons-material/AddCircleRounded';
 import HeaderImg from "@/molecules/header/HeaderImg";
+import RecipeTabs from '@/molecules/recipeTabs/RecipeTabs';
 
 const itemData = [
     {
@@ -128,10 +129,19 @@ function FoodListComponent(props) {
 }
 
 const Receta = () => {
+    const [tab, setTab] = useState(0)
+
+    const handleChange = (val) => {
+        setTab(val)
+    }
+
     return (
       <div>
-        <HeaderImg imagen = "/images/burger.jpg" height = "500px" texto = "Hamburguesa"/>
-        <FoodListComponent foodLists={itemData} />       
+        <HeaderImg imagen = "/images/burger.jpg" height = "240px" texto = "Hamburguesa"/>
+        <RecipeTabs handleChange = {handleChange}/>
+        {
+            tab == 0 ?  <FoodListComponent foodLists={itemData} /> : <div>Pasos</div>
+        }
       </div>)
 }
 
