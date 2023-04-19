@@ -36,7 +36,7 @@
 .swiperTitle{
     position: absolute;
     color: var(--white);
-    max-width: 50%;
+    max-width: 80%;
     left: 1rem;
     top: 0.6rem;
     font-weight: 800;
