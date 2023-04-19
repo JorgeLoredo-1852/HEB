@@ -1,10 +1,10 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '@/styles/Home.module.css'
-import PopularRecipes from '@/components/popularRecipes/popularRecipes'
+import Head from "next/head";
+import Image from "next/image";
+import styles from "@/styles/Home.module.css";
+import PopularRecipes from "@/components/popularRecipes/popularRecipes";
+import SearchBox from "@/molecules/searchBox/searchBox";
 
 export default function Home() {
-
   return (
     <>
       <Head>
@@ -14,12 +14,10 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
+        <PopularRecipes />
 
-        
-        <PopularRecipes/>
-        
-
+        <SearchBox />
       </main>
     </>
-  )
+  );
 }
