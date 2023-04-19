@@ -1,0 +1,12 @@
+.imgStyle {
+    width: "inherit";
+}
+
+.boxStyle {
+    width: "100vw";
+    height: "200px";
+    overflow: "hidden";
+    display: "flex";
+    align-items: center;
+}
+

@@ -1,5 +1,6 @@
 import Navbar from '@/components/navbar/navbar'
 import UserContext from '@/hooks/UserContext'
+import HeaderImg from '@/molecules/header/HeaderImg'
 import '@/styles/globals.css'
 import { Poppins } from '@next/font/google'
 

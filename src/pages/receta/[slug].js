@@ -128,9 +128,10 @@ function FoodListComponent(props) {
 
 const Receta = () => {
     return (
-
-        <FoodListComponent foodLists={itemData} />
-    )
+      <div>
+        <HeaderImg imagen = "/images/burger.jpg" height = "500px" texto = "Hamburguesa"/>
+        <FoodListComponent foodLists={itemData} />       
+      </div>)
 }
 
 export default Receta
