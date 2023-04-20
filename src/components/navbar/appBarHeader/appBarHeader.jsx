@@ -21,7 +21,7 @@ const MyAppBar = ({ showBackButton, showListButton, listLink, backLink }) => {
   };
 
   return (
-    <AppBar position="static" color="secondary" sx={{ backgroundColor: '#DD2B22' }}>
+    <AppBar position="fixed" color="secondary" sx={{ backgroundColor: '#DD2B22' }}>
       <Toolbar>
         {/* Back Button */}
         {showBackButton && (
