@@ -36,8 +36,16 @@ a {
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+
+
+
+
+.myRecipes_swiperSlideMy__u2eW_.swiper-slide-active{
+  height: 250px !important;
+  transition: all 0.3s;
+  margin-top: 0;
+}
+
+.myRecipes_swiperSlideMy__u2eW_{
+  margin-top: 2rem; 
 }
