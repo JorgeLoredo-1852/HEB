@@ -224,7 +224,7 @@ function PasosComponent(props) {
                 aria-labelledby="basic-list-demo"
                 variant="outlined"
                 sx={{
-                    my: 5,
+                    mb: 5,
                     bgcolor: 'background.body',
                     '--ListItemDecorator-size': '32px',
                     '--ListItem-paddingLeft': '1.5rem',
