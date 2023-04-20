@@ -10,6 +10,49 @@ import AddCircleRoundedIcon from '@mui/icons-material/AddCircleRounded';
 import HeaderImg from "@/molecules/header/HeaderImg";
 import styles from "./receta.module.css";
 import RecipeTabs from '@/molecules/recipeTabs/RecipeTabs';
+import { useEffect } from 'react';
+import { initializeApp } from 'firebase/app';
+import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
+
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCWT4mLjto-JRexnFS99V5BZNGPE0YBOzs",
+  authDomain: "heb-go.firebaseapp.com",
+  databaseURL: "https://heb-go-default-rtdb.firebaseio.com",
+  projectId: "heb-go",
+  storageBucket: "heb-go.appspot.com",
+  messagingSenderId: "855494035420",
+  appId: "1:855494035420:web:83d130a72d5b73f01db119",
+  measurementId: "G-TYR8D6KKNZ"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const foodData = [
+]
+
+function Write(){
+    const [users, setUsers] = useState([]);
+    const userCollectionReference = collection(db, "Ingredientes");
+    
+
+    useEffect(() => {
+    const getUsers = async () =>{
+        const data = await getDocs(userCollectionReference);
+        setUsers(data.docs.map((doc) => ({...doc.data()})))
+        users.map((user) => {
+            let food = {
+                "price": user.precio,
+                "item": user.nombre,
+                "qty": user.cantidad,
+                "img": user.imagen,
+            }
+            foodData.push(food);
+        })
+    }
+    getUsers()
+    }, []);
+}
 
 const pasosData = [
     {
@@ -119,6 +162,7 @@ const itemData = [
 
 function FoodListComponent(props) {
     const foodLists = props.foodLists;
+    Write()
 
     return (
         <div>
@@ -126,15 +170,15 @@ function FoodListComponent(props) {
                 aria-labelledby="basic-list-demo"
                 variant="outlined"
                 sx={{
-                    my: 5,
+                    mb: 5,
                     bgcolor: 'background.body',
-                    '--ListItemDecorator-size': '32px',
+                    '--ListItemDecorator-size': '50px',
                     '--ListItem-paddingLeft': '1.5rem',
                     '--ListItem-paddingRight': '1rem',
                 }}
             >
                 {
-                    foodLists.map((itemData) => (
+                    foodLists.map((foodData) => (
                         <Box>
                             <List
                                 sx={{
@@ -145,19 +189,18 @@ function FoodListComponent(props) {
                                 <ListItem nested>
                                     <List>
                                         <ListItem endAction={
-                                            <IconButton sx={{mx: 2}} aria-label="AddCircleRoundedIcon" variant="plain" size="lg" color="danger">
-                                                <AddCircleRoundedIcon sx={{ fontSize: "50px" }}/>
+                                            <IconButton sx={{ mx: 2 }} aria-label="AddCircleRoundedIcon" variant="plain" size="lg" color="danger">
+                                                <AddCircleRoundedIcon sx={{ fontSize: "50px" }} />
                                             </IconButton>
                                         }>
-                                            <ListItemDecorator sx={{ alignSelf: 'flex-start' }}>
-                                                <Box component="img" src={itemData.img} sx={{ maxWidth: "100%", height: "80px" }}></Box>
+                                            <ListItemDecorator sx={{ alignItems: "center", display: "flex", justifyContent: 'center',width: "100px"}}>
+                                                <Box component="img" src={foodData.img} sx={{  maxWidth: "100px", height: "80px" }}></Box>
                                             </ListItemDecorator>
                                             <Stack spacing={0.1}>
-                                                <Box style={{ fontWeight: "500"}}>{itemData.item}</Box>
-                                                <Box style={{ fontSize: "13px"}}>{itemData.qty}</Box>
-                                                <Box style={{ fontWeight: "700", fontSize: "15px" }}>{itemData.price}</Box>
+                                                <Box style={{ fontWeight: "500" }}>{foodData.item}</Box>
+                                                <Box style={{ fontSize: "13px" }}>{foodData.qty}</Box>
+                                                <Box style={{ fontWeight: "700", fontSize: "15px" }}>${foodData.price}</Box>
                                             </Stack>
-
                                         </ListItem>
                                         <ListDivider inset="gutter" />
                                     </List>
@@ -202,12 +245,12 @@ function PasosComponent(props) {
                             >
                                 <ListItem nested>
                                     <List>
-                                        <ListItem sx={{ display: "flex", alignItems: "flex-start"}}>
+                                        <ListItem sx={{ display: "flex", alignItems: "flex-start" }}>
                                             <ListItemDecorator>
                                                 <div className={styles.number}>{nPaso}</div>
                                             </ListItemDecorator>
                                             <Stack>
-                                                <Box style={{ fontWeight: "500"}}>{pasosData.text}</Box>
+                                                <Box style={{ fontWeight: "500" }}>{pasosData.text}</Box>
                                             </Stack>
                                         </ListItem>
                                         <ListDivider inset="gutter" />
@@ -215,7 +258,7 @@ function PasosComponent(props) {
                                 </ListItem>
                             </List>
                         </Box>
-})
+                    })
                 }
             </List>
         </div>
@@ -223,20 +266,24 @@ function PasosComponent(props) {
 }
 
 const Receta = () => {
+    
+    
     const [tab, setTab] = useState(0)
-
+    
     const handleChange = (val) => {
         setTab(val)
     }
 
     return (
-      <div>
-        <HeaderImg imagen = "/images/burger.jpg" height = "240px" texto = "Hamburguesa"/>
-        <RecipeTabs handleChange = {handleChange}/>
-        {
-            tab == 0 ?  <FoodListComponent foodLists={itemData} /> : <PasosComponent pasosList={pasosData} />
-        }
-      </div>)
+        
+        <div>
+            
+            <HeaderImg imagen="/images/burger.jpg" height="240px" texto="Hamburguesa" />
+            <RecipeTabs handleChange={handleChange} />
+            {
+                tab == 0 ? <FoodListComponent foodLists={foodData} /> : <PasosComponent pasosList={pasosData} />
+            }
+        </div>)
 }
 
 export default Receta
