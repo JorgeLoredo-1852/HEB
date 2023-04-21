@@ -28,18 +28,14 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-const foodData = [
-]
 
 function Write(){
-    const [users, setUsers] = useState([]);
+    const [users, setUsers] = useState([]); 
     const userCollectionReference = collection(db, "Ingredientes");
     
-
-    useEffect(() => {
-    const getUsers = async () =>{
+    const getUsers = async () =>{ 
         const data = await getDocs(userCollectionReference);
-        setUsers(data.docs.map((doc) => ({...doc.data()})))
+        setUsers(data.docs.map((doc) => ({...doc.data()}))) 
         users.map((user) => {
             let food = {
                 "price": user.precio,
@@ -47,12 +43,18 @@ function Write(){
                 "qty": user.cantidad,
                 "img": user.imagen,
             }
-            foodData.push(food);
         })
     }
-    getUsers()
+
+    useEffect(() => {
+        getUsers();
     }, []);
-}
+    
+    /*console.log(users)*/
+    return users;
+} 
+
+
 
 const pasosData = [
     {
@@ -161,10 +163,10 @@ const itemData = [
 ]
 
 function FoodListComponent(props) {
-    const foodLists = props.foodLists;
-    Write()
+    
+    var foodLists = props.foodLists; 
 
-    return (
+    return  foodLists.length == 0 ? <div> Loading... </div> : (
         <div>
             <List
                 aria-labelledby="basic-list-demo"
@@ -175,14 +177,14 @@ function FoodListComponent(props) {
                     '--ListItemDecorator-size': '50px',
                     '--ListItem-paddingLeft': '1.5rem',
                     '--ListItem-paddingRight': '1rem',
-                }}
+                }} 
             >
                 {
-                    foodLists.map((foodData) => (
-                        <Box>
+                    foodLists.map((foodData, i) => (
+                        <Box key={i}>
                             <List
-                                sx={{
-                                    width: "100%",
+                                sx={{  
+                                    width: "100%", 
                                     bgcolor: 'background.body',
                                 }}
                             >
@@ -194,12 +196,12 @@ function FoodListComponent(props) {
                                             </IconButton>
                                         }>
                                             <ListItemDecorator sx={{ alignItems: "center", display: "flex", justifyContent: 'center',width: "100px"}}>
-                                                <Box component="img" src={foodData.img} sx={{  maxWidth: "100px", height: "80px" }}></Box>
+                                                <Box component="img" src={foodData.imagen} sx={{  maxWidth: "100px", height: "80px" }}></Box>
                                             </ListItemDecorator>
                                             <Stack spacing={0.1}>
-                                                <Box style={{ fontWeight: "500" }}>{foodData.item}</Box>
-                                                <Box style={{ fontSize: "13px" }}>{foodData.qty}</Box>
-                                                <Box style={{ fontWeight: "700", fontSize: "15px" }}>${foodData.price}</Box>
+                                                <Box style={{ fontWeight: "500" }}>{foodData.nombre}</Box>
+                                                <Box style={{ fontSize: "13px" }}>{foodData.cantidad}</Box>
+                                                <Box style={{ fontWeight: "700", fontSize: "15px" }}>${foodData.precio}</Box>
                                             </Stack>
                                         </ListItem>
                                         <ListDivider inset="gutter" />
@@ -212,7 +214,7 @@ function FoodListComponent(props) {
             </List>
         </div>
     );
-}
+} 
 
 function PasosComponent(props) {
     const pasosList = props.pasosList;
@@ -269,10 +271,11 @@ const Receta = () => {
     
     
     const [tab, setTab] = useState(0)
-    
+    const foodL = Write();
     const handleChange = (val) => {
         setTab(val)
     }
+    
 
     return (
         
@@ -281,7 +284,7 @@ const Receta = () => {
             <HeaderImg imagen="/images/burger.jpg" height="240px" texto="Hamburguesa" />
             <RecipeTabs handleChange={handleChange} />
             {
-                tab == 0 ? <FoodListComponent foodLists={foodData} /> : <PasosComponent pasosList={pasosData} />
+                tab == 0 ? <FoodListComponent foodLists={foodL} /> : <PasosComponent pasosList={pasosData} /> 
             }
         </div>)
 }
