@@ -1,8 +1,10 @@
+
 import Head from "next/head";
 import Image from "next/image";
 import styles from "@/styles/Home.module.css";
 import PopularRecipes from "@/components/popularRecipes/popularRecipes";
 import SearchBox from "@/molecules/searchBox/searchBox";
+import Categories from "@/components/categories/categories";
 
 export default function Home() {
   return (
@@ -16,6 +18,7 @@ export default function Home() {
       <main className={styles.main}>
         <SearchBox />
         <PopularRecipes />
+        <Categories />
       </main>
     </>
   );

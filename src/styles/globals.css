@@ -41,3 +41,8 @@ a {
     color-scheme: dark;
   }
 }
+
+.slick-slide > div {
+  margin-right: 0px;
+  width: 100px;
+}
