@@ -36,14 +36,6 @@ function Write(){
     const getUsers = async () =>{ 
         const data = await getDocs(userCollectionReference);
         setUsers(data.docs.map((doc) => ({...doc.data()}))) 
-        users.map((user) => {
-            let food = {
-                "price": user.precio,
-                "item": user.nombre,
-                "qty": user.cantidad,
-                "img": user.imagen,
-            }
-        })
     }
 
     useEffect(() => {
@@ -53,114 +45,6 @@ function Write(){
     /*console.log(users)*/
     return users;
 } 
-
-
-
-const pasosData = [
-    {
-        png: "https://assets.stickpng.com/images/58c5804d09e8bc1b42c77940.png",
-        text: "Paso 1",
-    },
-    {
-        png: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Eo_circle_red_white_number-2.svg/2048px-Eo_circle_red_white_number-2.svg.png",
-        text: "Paso 2",
-    },
-    {
-        png: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Eo_circle_red_white_number-3.svg/1200px-Eo_circle_red_white_number-3.svg.png",
-        text: "Paso 3",
-    },
-    {
-        png: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Eo_circle_red_white_number-4.svg/1200px-Eo_circle_red_white_number-4.svg.png",
-        text: "Paso 4",
-    },
-    {
-        png: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Eo_circle_red_white_number-5.svg/1200px-Eo_circle_red_white_number-5.svg.png",
-        text: "Paso 5",
-    },
-    {
-        png: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Eo_circle_red_white_number-6.svg/1200px-Eo_circle_red_white_number-6.svg.png",
-        text: "Paso 6",
-    },
-    {
-        png: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Eo_circle_red_white_number-7.svg/1200px-Eo_circle_red_white_number-7.svg.png",
-        text: "Paso 7",
-    },
-    {
-        png: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Eo_circle_red_white_number-8.svg/1200px-Eo_circle_red_white_number-8.svg.png",
-        text: "Paso 8",
-    },
-    {
-        png: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Eo_circle_red_white_number-9.svg/1200px-Eo_circle_red_white_number-9.svg.png",
-        text: "Paso 9",
-    },
-    {
-        png: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Eo_circle_red_white_number-10.svg/1200px-Eo_circle_red_white_number-10.svg.png",
-        text: "Paso 10",
-    },
-]
-
-const itemData = [
-    {
-        item: "Heinz Catsup",
-        qty: "500ml",
-        price: "$50.00",
-        img: "https://d167y3o4ydtmfg.cloudfront.net/krafts/303/1620226425821_750x750.png"
-    },
-    {
-        item: "Heinz Mustard",
-        qty: "500ml",
-        price: "$50.00",
-        img: "https://cdn.allotta.io/image/upload/v1666108958/dxp-images/heinz/products/100naturalyellowmustard-00013000002127-en-US.png"
-    },
-    {
-        item: "Heinz Catsup",
-        qty: "500ml",
-        price: "$50.00",
-        img: "https://d167y3o4ydtmfg.cloudfront.net/krafts/303/1620226425821_750x750.png"
-    },
-    {
-        item: "Heinz Mustard",
-        qty: "500ml",
-        price: "$50.00",
-        img: "https://cdn.allotta.io/image/upload/v1666108958/dxp-images/heinz/products/100naturalyellowmustard-00013000002127-en-US.png"
-    },
-    {
-        item: "Heinz Catsup",
-        qty: "500ml",
-        price: "$50.00",
-        img: "https://d167y3o4ydtmfg.cloudfront.net/krafts/303/1620226425821_750x750.png"
-    },
-    {
-        item: "Heinz Mustard",
-        qty: "500ml",
-        price: "$50.00",
-        img: "https://cdn.allotta.io/image/upload/v1666108958/dxp-images/heinz/products/100naturalyellowmustard-00013000002127-en-US.png"
-    },
-    {
-        item: "Heinz Catsup",
-        qty: "500ml",
-        price: "$50.00",
-        img: "https://d167y3o4ydtmfg.cloudfront.net/krafts/303/1620226425821_750x750.png"
-    },
-    {
-        item: "Heinz Mustard",
-        qty: "500ml",
-        price: "$50.00",
-        img: "https://cdn.allotta.io/image/upload/v1666108958/dxp-images/heinz/products/100naturalyellowmustard-00013000002127-en-US.png"
-    },
-    {
-        item: "Heinz Catsup",
-        qty: "500ml",
-        price: "$50.00",
-        img: "https://d167y3o4ydtmfg.cloudfront.net/krafts/303/1620226425821_750x750.png"
-    },
-    {
-        item: "Heinz Mustard",
-        qty: "500ml",
-        price: "$50.00",
-        img: "https://cdn.allotta.io/image/upload/v1666108958/dxp-images/heinz/products/100naturalyellowmustard-00013000002127-en-US.png"
-    },
-]
 
 function FoodListComponent(props) {
     
@@ -220,7 +104,7 @@ function PasosComponent(props) {
     const pasosList = props.pasosList;
     let nPaso = 0
 
-    return (
+    return pasosList == 0? <div> Loading... </div> : (
         <div>
             <List
                 aria-labelledby="basic-list-demo"
@@ -272,6 +156,7 @@ const Receta = () => {
     
     const [tab, setTab] = useState(0)
     const foodL = Write();
+    const pasosData = [];
     const handleChange = (val) => {
         setTab(val)
     }
