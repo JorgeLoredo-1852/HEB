@@ -46,6 +46,10 @@ a {
   margin-top: 0;
 }
 
+.slick-slide > div {
+  margin-right: 0px;
+  width: 100px;
+}
 .myRecipes_swiperSlideMy__u2eW_{
   margin-top: 2rem; 
 }
