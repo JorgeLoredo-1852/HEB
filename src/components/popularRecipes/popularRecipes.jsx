@@ -65,7 +65,7 @@ const PopularRecipes = () => {
                         <div className={styles.swiperTitle}>Pasta a la Bolognesa</div>
                         <div className={styles.cookingTime}>
                             <div className={styles.timeContainer}>
-                                <AccessTimeIcon fontSize="large" sx={{ color: "white"}}/>
+                                <AccessTimeIcon fontSize="medium" sx={{ color: "white"}}/>
                             </div>
                             <div style={{color:"white"}}>
                                 <div className={styles.timeNumber}>60</div>

@@ -19,8 +19,9 @@ export default function Home() {
       <main className={styles.main}>
         <SearchBox />
         <PopularRecipes />
-        <Categories />
         <MyRecipes/>
+        <Categories />
+        
       </main>
     </>
   );
