@@ -9,6 +9,8 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
+import Link from "next/link";
+import Box from "@mui/material";
 
 const arr = [1,2,3,4,5,6,7,8,9,10,11,12]
 
@@ -30,30 +32,35 @@ export default class Categories extends Component {
       
     };
     return (
-      <div>
-        <div className={styles.container}>
-            <div className={styles.title}>Categories</div>
-            
+      
+        <div style={{marginBottom: "50px"}}>
+          <div className={styles.container}>
+              <div className={styles.title}>Categories</div>
+              <Link href={""}>
+                  <div className={styles.btn}>Ver todo</div>
+              </Link>
+        
+          </div>
+          <Slider {...settings}>
+            {arr.map((num) => (
+            <CardActionArea>
+              <CardMedia
+                component="img"
+                height="100"
+                image="/images/food.png"
+                sx={{ borderRadius: '16px'}}
+                
+              />
+              <CardContent sx={{paddingTop: "5px", paddingBottom: "10px"}}>
+                <Typography gutterBottom variant="p" component="div"  >
+                  Desayunos
+                </Typography>
+              </CardContent>
+            </CardActionArea>))}
+            {/* <div><h3>{num}</h3></div> */}
+          </Slider>
         </div>
-        <Slider {...settings}>
-          {arr.map((num) => (
-          <CardActionArea>
-            <CardMedia
-              component="img"
-              height="100"
-              image="/images/food.png"
-              sx={{ borderRadius: '16px'}}
-              
-            />
-            <CardContent>
-              <Typography gutterBottom variant="p" component="div" sx={{ textAlign: 'center' }} >
-                Desayunos
-              </Typography>
-            </CardContent>
-          </CardActionArea>))}
-          {/* <div><h3>{num}</h3></div> */}
-        </Slider>
-      </div>
+   
     );
   }
 }

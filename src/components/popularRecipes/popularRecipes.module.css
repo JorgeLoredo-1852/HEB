@@ -2,7 +2,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1rem;
+    margin-bottom: .8rem;
+    margin-top: 1.5rem;
 }
 
 .title {
@@ -20,7 +21,7 @@
     justify-content: center;
     overflow: hidden;
     height: 230px;
-    border-radius: 5px;
+    border-radius: 10px;
     position: relative;
 }
 
@@ -50,16 +51,18 @@
 }
 
 .timeContainer{
+    margin-top: 0.2rem;
     margin-right: 0.5rem;
 }
 
 .timeNumber{
     font-weight: 800;
-    font-size: 1.3rem;
+    font-size: 1rem;
     line-height: 1;
     color: white;
 }
 
 .timeTag{
     color: white;
+    font-size: .8rem;
 }
