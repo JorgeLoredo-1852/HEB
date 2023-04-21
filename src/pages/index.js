@@ -5,6 +5,7 @@ import styles from "@/styles/Home.module.css";
 import PopularRecipes from "@/components/popularRecipes/popularRecipes";
 import SearchBox from "@/molecules/searchBox/searchBox";
 import Categories from "@/components/categories/categories";
+import MyRecipes from "@/components/myRecipes/myRecipes";
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
         <SearchBox />
         <PopularRecipes />
         <Categories />
+        <MyRecipes/>
       </main>
     </>
   );
