@@ -12,7 +12,7 @@ import styles from "./receta.module.css";
 import RecipeTabs from '@/molecules/recipeTabs/RecipeTabs';
 import { useEffect } from 'react';
 import { initializeApp } from 'firebase/app';
-import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
+import { getFirestore, collection, getDocs, query, where } from 'firebase/firestore/lite';
 
 
 const firebaseConfig = {
@@ -29,22 +29,39 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-function Write(){
-    const [users, setUsers] = useState([]); 
-    const userCollectionReference = collection(db, "Ingredientes");
-    
-    const getUsers = async () =>{ 
-        const data = await getDocs(userCollectionReference);
-        setUsers(data.docs.map((doc) => ({...doc.data()}))) 
+function GetCollection(col){
+    const [docs, setDocs] = useState([]);
+    const collectionReference = collection(db, col); // Referencia para la coleccion que quieres
+
+    const getCollection = async() => {
+        const data = await(getDocs(collectionReference)); // Esta funcion hace la call
+        setDocs(data.docs.map((doc) => ({...doc.data()}))) // mapea la informacion de los documentos a variable docs
     }
 
     useEffect(() => {
-        getUsers();
+        getCollection(); 
     }, []);
-    
-    /*console.log(users)*/
-    return users;
-} 
+
+    return docs; // Regresa el arreglo con informacion de docs
+}
+
+function GetItem(col, id){
+    const [docs, setDocs] = useState([]);
+    const collectionReference = collection(db, col);
+
+    const q = query(collectionReference, where("id", "==", id));
+
+    const getItem = async() => {
+        const data = await(getDocs(q))
+        setDocs(data.docs.map((doc) => ({...doc.data()})))
+    } 
+
+    useEffect(() => {
+        getItem();
+    }, []);
+
+    return docs;
+}
 
 function FoodListComponent(props) {
     
@@ -118,11 +135,11 @@ function PasosComponent(props) {
                 }}
             >
                 {
-                    pasosList.map((pasosData) => {
+                    pasosList.map((pasosData, i) => {
 
                         nPaso = nPaso + 1
 
-                        return <Box>
+                        return <Box key = {i}>
                             <List
                                 sx={{
                                     width: "100%",
@@ -136,7 +153,7 @@ function PasosComponent(props) {
                                                 <div className={styles.number}>{nPaso}</div>
                                             </ListItemDecorator>
                                             <Stack>
-                                                <Box style={{ fontWeight: "500" }}>{pasosData.text}</Box>
+                                                <Box style={{ fontWeight: "500" }}>{pasosData}</Box>
                                             </Stack>
                                         </ListItem>
                                         <ListDivider inset="gutter" />
@@ -155,8 +172,8 @@ const Receta = () => {
     
     
     const [tab, setTab] = useState(0)
-    const foodL = Write();
-    const pasosData = [];
+    const foodList = GetCollection("Ingredientes");
+    const Pasos = GetItem("Recetas", 0);
     const handleChange = (val) => {
         setTab(val)
     }
@@ -169,7 +186,7 @@ const Receta = () => {
             <HeaderImg imagen="/images/burger.jpg" height="240px" texto="Hamburguesa" />
             <RecipeTabs handleChange={handleChange} />
             {
-                tab == 0 ? <FoodListComponent foodLists={foodL} /> : <PasosComponent pasosList={pasosData} /> 
+                tab == 0 ? <FoodListComponent foodLists={foodList} /> : <PasosComponent pasosList={Pasos[0].pasos} /> 
             }
         </div>)
 }
