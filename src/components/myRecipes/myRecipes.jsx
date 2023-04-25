@@ -50,7 +50,7 @@ const MyRecipes = () => {
                 <div className={styles.btn}>Ver todo</div>
             </Link>
         </div>
-        <div style={{}}>
+        <div style={{height: "15.5rem"}}>
             <Swiper
                 loop={true}
                 grabCursor={true}
