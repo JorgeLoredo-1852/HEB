@@ -16,22 +16,23 @@
     color: var(--red-main);
 }
 
-.swiperSlide{
+.swiperSlideMy{
     display: flex !important;
     justify-content: center;
     overflow: hidden;
-    height: 230px;
-    border-radius: 10px;
+    height: 180px;
+    border-radius: 16px;
     position: relative;
 }
 
 .swiperOverlay{
     position: absolute;
-    opacity: 0.45;
+    /*opacity: 0.45;*/
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: black;
+    background-size: cover;
+    /*background-color: black;*/
 }   
 
 .swiperTitle{
@@ -41,6 +42,7 @@
     left: 1rem;
     top: 0.6rem;
     font-weight: 800;
+    font-size: 1.3rem;
 }
 
 .cookingTime{
@@ -51,18 +53,16 @@
 }
 
 .timeContainer{
-    margin-top: 0.2rem;
     margin-right: 0.5rem;
 }
 
 .timeNumber{
     font-weight: 800;
-    font-size: 1rem;
+    font-size: 1.3rem;
     line-height: 1;
     color: white;
 }
 
 .timeTag{
     color: white;
-    font-size: .8rem;
 }

@@ -1,0 +1,16 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: .8rem;
+    margin-top: 1.5rem;
+}
+
+.title {
+    font-size: 1rem;
+    font-weight: 800;
+}
+.btn{
+    font-size: 0.8rem;
+    color: var(--red-main);
+}

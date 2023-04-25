@@ -6,11 +6,12 @@
 
 .navbarBtnActive{
   color: var(--red-main) !important;
+  border-top: 1px solid var(--red-main) !important;
 }
 
 .navbarBtn:active{
   color: var(--red-main) !important;
-  
+  border-top: 1px solid var(--red-main) !important;
 }
 
 

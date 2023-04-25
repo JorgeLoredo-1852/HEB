@@ -19,7 +19,7 @@ export default function Navbar() {
   };
 
   return (
-    <div style={{width:"100vw", position:"fixed", bottom:0}}>
+    <div style={{width:"100vw", position:"fixed", bottom:0, boxShadow:"0px 0px 0.5px black"}}>
     <BottomNavigation value={value} onChange={handleChange}>
         {tabs.map((tab) => (      
               <BottomNavigationAction
