@@ -8,24 +8,39 @@ import ListAltIcon from '@mui/icons-material/ListAlt';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 
+import { routeConfig } from './routeConfig';
 
-const MyAppBar = ({ showBackButton, showListButton, listLink, backLink }) => {
-  const [value, setValue] = useState('/');
+
+const MyAppBar = () => {
+
+  const [config, setConfig] = useState({})
   const router = useRouter();
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
+  useEffect(() => {
+    for(var i = 0; i < routeConfig.length; i++){
+      if(routeConfig[i].path == router.pathname || router.pathname.includes(routeConfig[i].path)){
+        setConfig({...routeConfig[i]})
+      }
+    }
+  }, [router.pathname])
+
+  const handleBackClick = () => {
+    //route to last tab
+    router.back();
   };
-  const handleClick = (link) => {
-    router.push(link);
+
+  const handleListClick = () => {
+    router.push('/list');
   };
+
+
 
   return (
     <AppBar position="fixed" color="secondary" sx={{ backgroundColor: '#DD2B22' }}>
-      <Toolbar>
+      <Toolbar sx={{position:"relative"}}>
         {/* Back Button */}
-        {showBackButton && (
-          <IconButton edge="start" color="inherit" aria-label="back" onClick={() => handleClick(backLink)}>
+        {config.showBackButton && (
+          <IconButton sx={{position:"absolute", left:"1rem"}} color="inherit" aria-label="back" onClick={() => handleBackClick()}>
             <ArrowBackIcon />
           </IconButton>
         )}
@@ -36,8 +51,8 @@ const MyAppBar = ({ showBackButton, showListButton, listLink, backLink }) => {
         </Box>
 
         {/* List Button */}
-        {showListButton && (
-          <IconButton edge="end" color="inherit" aria-label="list" onClick={() => handleClick(listLink)}>
+        {config.showListButton && (
+          <IconButton sx={{position:"absolute", right:"1rem"}}  color="inherit" aria-label="list" onClick={() => handleListClick()}>
             <ListAltIcon />
           </IconButton>
         )}

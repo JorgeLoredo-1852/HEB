@@ -1,7 +1,10 @@
 .container {
-    margin-bottom: 6rem;
-    position: relative;
-    z-index: 2;
+    width: 100vw;
+    position: fixed;
+    z-index: 1000;
+    bottom: 0;
+    box-shadow: 0px 0px 0.5px black;
+
   }
 
 .navbarBtnActive{

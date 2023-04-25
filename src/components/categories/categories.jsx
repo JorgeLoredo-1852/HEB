@@ -43,7 +43,7 @@ export default class Categories extends Component {
           </div>
           <Slider {...settings}>
             {arr.map((num) => (
-            <CardActionArea>
+            <CardActionArea key={`cardArr${num}`}>
               <CardMedia
                 component="img"
                 height="100"

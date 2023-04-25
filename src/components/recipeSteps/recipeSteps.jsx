@@ -26,7 +26,7 @@ function RecipeSteps(props) {
                                         <ListItemDecorator>
                                             <div className={Math.floor(nPaso / 10) > 0 ? styles.bigNumber : styles.number}>{nPaso}</div>
                                         </ListItemDecorator>
-                                        <Box style={{ fontWeight: "500", paddingLeft: "0.8rem"}}>{pasosData.text}</Box>
+                                        <Box style={{ fontWeight: "500", paddingLeft: "0.8rem"}}>{pasosData}</Box>
                                     </ListItem>
                                     {nPaso == pasosList.length ? <></> : <ListDivider inset="gutter" />}
                         </Box>

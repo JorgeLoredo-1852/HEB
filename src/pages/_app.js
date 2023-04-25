@@ -1,9 +1,10 @@
 import Navbar from '@/components/navbar/navbar'
-import UserContext from '@/hooks/UserContext'
+import ListContext from '@/hooks/ListContext'
 import AppBarHeader from '@/components/navbar/appBarHeader/appBarHeader'
 import HeaderImg from '@/molecules/header/HeaderImg'
 import '@/styles/globals.css'
 import { Poppins } from '@next/font/google'
+import { useState } from 'react'
 
 
 /*
@@ -19,13 +20,15 @@ console.log(getCities(db))*/
 const poppins = Poppins({ weight: '400', subsets: ['latin'] })
 
 export default function App({ Component, pageProps }) {
+  const [lInfo, setLInfo] = useState({})
+
   return (
-    <UserContext.Provider>
+    <ListContext.Provider value={{listInfo: lInfo, setListInfo: setLInfo}}>
       <main className={poppins.className}>
-        <AppBarHeader showBackButton='true' showListButton='true' listLink='/search' backLink='/search'/>
+        <AppBarHeader/>
         <Component {...pageProps} />
         <Navbar/>
       </main>
-    </UserContext.Provider>
+    </ListContext.Provider>
   )
 }
