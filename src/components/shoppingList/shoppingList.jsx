@@ -15,23 +15,25 @@ import { useState } from "react";
 import { useEffect } from "react";
 import styles from "./shoppingList.module.css";
 
-function ShoppingList(props) {
-  const foodLists = props.foodLists;
+function ShoppingList() {
   const { listInfo, setListInfo } = useContext(ListContext);
-  const [data, setData] = useState({});
 
+  const [data, setData] = useState({});
   useEffect(() => {
     setData({ ...listInfo });
   }, []);
 
+  console.log(Object.values(listInfo)[0])
+
+
   return (
     <div>
       <List aria-labelledby="basic-list-demo">
-        {foodLists.map((itemData) => (
+        { Object.values(listInfo).map((itemData) => (
           <Box key={itemData.nombre}>
             <ListItem
               endAction={
-                <p style={{ fontSize: "20px", paddingRight: "20px" }}> 1 </p>
+                <p style={{ fontSize: "20px", paddingRight: "20px" }}> {itemData.quantity} </p>
               }
             >
               <ListItemDecorator
@@ -51,7 +53,7 @@ function ShoppingList(props) {
                 </Box>
               </Stack>
             </ListItem>
-            {itemData == foodLists[foodLists.length - 1] ? (
+            {itemData.nombre == Object.values(listInfo)[Object.values(listInfo).length - 1].nombre ? (
               <></>
             ) : (
               <ListDivider inset="gutter" />

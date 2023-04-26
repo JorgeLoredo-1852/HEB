@@ -6,9 +6,7 @@ import BigButton from "@/atoms/buttonBig/buttonBig";
 import { useRouter } from "next/router";
 
 const List = () => {
-  const { listInfo, setListInfo } = useContext(ListContext);
   const foodList = GetCollection("Ingredientes");
-
   const router = useRouter();
 
   const onClick = () => {
@@ -16,19 +14,8 @@ const List = () => {
   };
 
   return (
-    /*
-    <div style={{ marginTop: "6rem" }}>
-      {Object.keys(listInfo).map((key) => {
-        return (
-          <div>
-            {key} // {listInfo[key]}
-          </div>
-        );
-      })}
-    </div>*/
-
     <div style={{ marginTop: "5rem", marginBottom: "5rem" }}>
-      <ShoppingList foodLists={foodList} />
+      <ShoppingList />
       <BigButton
         color="main"
         callback={onClick}

@@ -35,19 +35,21 @@ function IngredientList(props) {
     const onClick = () => {
         foodLists.map((ingredient) => {
             if (data.hasOwnProperty(`${ingredient.nombre}`)) {
-                data[`${ingredient.nombre}`] = data[`${ingredient.nombre}`] + 1
+                data[`${ingredient.nombre}`] = {...data[`${ingredient.nombre}`], quantity: data[`${ingredient.nombre}`]['quantity'] + 1}
             } else {
-                data[`${ingredient.nombre}`] = 1
+                data[`${ingredient.nombre}`] = {...ingredient, quantity: 1}
             }
         })
         setListInfo({...listInfo, ...data})
     }
     
+    //console.log(listInfo)
+
     const onClickUnit = (itemData) => {
         if (data.hasOwnProperty(`${itemData.nombre}`)) {
-            data[`${itemData.nombre}`] = data[`${itemData.nombre}`] + 1
+            data[`${itemData.nombre}`] = {...data[`${itemData.nombre}`], quantity: data[`${itemData.nombre}`]['quantity'] + 1}
         } else {
-            data[`${itemData.nombre}`] = 1
+            data[`${itemData.nombre}`] = {...itemData, quantity: 1}
         }
         setListInfo({...listInfo, ...data})
     }
