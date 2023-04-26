@@ -13,6 +13,8 @@ import { useContext } from 'react';
 import ListContext from '@/hooks/ListContext';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { useRouter } from 'next/router';
+
 
 function IngredientList(props) {
     const foodLists = props.foodLists;
@@ -22,6 +24,12 @@ function IngredientList(props) {
     useEffect(() => {
         setData({...listInfo})
     }, [])
+    
+    const router = useRouter();
+
+    const onClick2 = () => {
+        router.push('/list')
+    }
 
 
     const onClick = () => {
@@ -57,7 +65,7 @@ function IngredientList(props) {
                                 <Stack spacing={0.6}>
                                     <Box style={{ fontWeight: "500"}}>{itemData.nombre}</Box>
                                     <Box style={{ fontSize: "13px"}}>{itemData.cantidad}</Box>
-                                    <Box style={{ fontWeight: "700", fontSize: "15px" }}>{itemData.precio}</Box>
+                                    <Box style={{ fontWeight: "700", fontSize: "15px" }}>${itemData.precio}</Box>
                                 </Stack>
                             </ListItem>
                             {itemData == foodLists[foodLists.length - 1] ? <></> : <ListDivider inset="gutter" />}
@@ -65,6 +73,7 @@ function IngredientList(props) {
                     ))
                 }
             </List>
+            <BigButton color="main" callback={onClick2} position="fixed" text="Ver mi Lista"/>
         </div>
     );
 }
