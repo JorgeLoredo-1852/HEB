@@ -63,11 +63,11 @@ function ShoppingList(props) {
       <div className={styles.pricesDiv}>
         <div className={styles.subtotalDiv}>
           <p>IVA: </p>
-          <p>+$ 160.00</p>
+          <p>+ $160.00</p>
         </div>
         <div className={styles.subtotalDiv}>
           <p>Descuentos: </p>
-          <p>-$ 323.00</p>
+          <p>- $323.00</p>
         </div>
       </div>
       <div className={styles.totalDiv}>

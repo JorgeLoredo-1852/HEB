@@ -27,7 +27,7 @@ const List = () => {
       })}
     </div>*/
 
-    <div style={{ marginTop: "3rem", marginBottom: "5rem" }}>
+    <div style={{ marginTop: "5rem", marginBottom: "5rem" }}>
       <ShoppingList foodLists={foodList} />
       <BigButton
         color="main"
