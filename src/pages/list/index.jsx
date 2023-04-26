@@ -3,13 +3,16 @@ import ListContext from "@/hooks/ListContext";
 import ShoppingList from "@/components/shoppingList/shoppingList";
 import { GetCollection, GetItem } from "../../api/firebase";
 import BigButton from "@/atoms/buttonBig/buttonBig";
+import { useRouter } from "next/router";
 
 const List = () => {
   const { listInfo, setListInfo } = useContext(ListContext);
   const foodList = GetCollection("Ingredientes");
 
+  const router = useRouter();
+
   const onClick = () => {
-    //Pending to add route
+    router.push("/");
   };
 
   return (
@@ -24,13 +27,13 @@ const List = () => {
       })}
     </div>*/
 
-    <div style={{ marginTop: "6rem" }}>
+    <div style={{ marginTop: "3rem", marginBottom: "5rem" }}>
       <ShoppingList foodLists={foodList} />
       <BigButton
         color="main"
         callback={onClick}
-        position="fixed"
         text="Desbloquear descuentos"
+        sx={{ marginBottom: "10px" }}
       />
     </div>
   );

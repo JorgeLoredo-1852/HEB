@@ -24,24 +24,16 @@ function ShoppingList(props) {
     setData({ ...listInfo });
   }, []);
 
-  const onClick = () => {
-    foodLists.map((ingredient) => {
-      if (data.hasOwnProperty(`${ingredient.nombre}`)) {
-        data[`${ingredient.nombre}`] = data[`${ingredient.nombre}`] + 1;
-      } else {
-        data[`${ingredient.nombre}`] = 1;
-      }
-    });
-    setListInfo({ ...listInfo, ...data });
-  };
-  console.log(listInfo);
-
   return (
     <div>
       <List aria-labelledby="basic-list-demo">
         {foodLists.map((itemData) => (
           <Box key={itemData.nombre}>
-            <ListItem endAction={<p styles={{ fontSize: "50px" }}> 1 </p>}>
+            <ListItem
+              endAction={
+                <p style={{ fontSize: "20px", paddingRight: "20px" }}> 1 </p>
+              }
+            >
               <ListItemDecorator
                 sx={{ alignSelf: "center", marginRight: "0.5rem" }}
               >
@@ -55,7 +47,7 @@ function ShoppingList(props) {
                 <Box style={{ fontWeight: "500" }}>{itemData.nombre}</Box>
                 <Box style={{ fontSize: "13px" }}>{itemData.cantidad}</Box>
                 <Box style={{ fontWeight: "700", fontSize: "15px" }}>
-                  {itemData.precio}
+                  ${itemData.precio}
                 </Box>
               </Stack>
             </ListItem>
