@@ -2,6 +2,10 @@ import * as React from "react";
 import { styled, alpha } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
+import { useContext } from "react";
+import SearchContext from "@/hooks/SearchContext";
+import { useState } from "react";
+import { useRouter } from "next/router";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -47,15 +51,30 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 const SearchBox = () => {
+  const { searchInfo, setSearchInfo } = useContext(SearchContext)
+  const [searchWord, setSearchWord] = useState("")
+  const router = useRouter()
+
+  const onSubmit = (e) => {
+    e.preventDefault()
+    if(router.asPath != "/search"){
+      router.push("/search")
+    }
+    setSearchInfo(searchWord)
+    console.log(searchWord)
+  }
+
   return (
     <Search>
       <SearchIconWrapper>
         <SearchIcon />
       </SearchIconWrapper>
+      <form onSubmit={onSubmit}>
       <StyledInputBase
+        onChange={(e) => {setSearchWord(e.target.value)}}
         placeholder="¿De que tienes antojo?"
         inputProps={{ "aria-label": "search" }}
-      />
+      /></form>
     </Search>
   );
 };

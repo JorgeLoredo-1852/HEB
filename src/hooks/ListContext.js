@@ -2,7 +2,7 @@ import { createContext } from "react";
 
 const ListContext = createContext({
     listInfo: {},
-    setListInfo: () => {}
+    setListInfo: () => {},
 })
 
 export default ListContext;

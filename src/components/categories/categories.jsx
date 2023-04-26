@@ -1,36 +1,40 @@
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
-import React, { Component } from "react";
+import React from "react";
 import Slider from "react-slick";
 import styles from "./categories.module.css";
-import { ArrowBack } from "@mui/icons-material";
-import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 import Link from "next/link";
-import Box from "@mui/material";
+import { useRouter } from "next/router";
+import { useContext } from "react";
+import SearchContext from "@/hooks/SearchContext";
+import { Category } from "@mui/icons-material";
 
-const arr = [1,2,3,4,5,6,7,8,9,10,11,12]
+const arr = ["Desayunos", "Comidas", "Cenas", "Aperitivos", "Antojitos", "Bebidas", "Rápida", "Postres"]
+const settings = {
+  className: "center",
+  centerMode: false,
+  infinite: false,
+  slidesToShow: 3,
+  speed: 700,
+  rows: 2,
+  slidesPerRow: 1,
+  swipeToSlide: true,
+  arrows: false,
+};
 
+const Categories = () => {
+    const { searchInfo, setSearchInfo } = useContext(SearchContext)
+    const router = useRouter()
 
+    const selectCategory = (category) => {
+      router.push('/search')
+      setSearchInfo(category)
+    }
 
-export default class Categories extends Component {
-  render() {
-    const settings = {
-      className: "center",
-      centerMode: false,
-      infinite: false,
-      slidesToShow: 3,
-      speed: 700,
-      rows: 2,
-      slidesPerRow: 1,
-      swipeToSlide: true,
-      arrows: false,
-      
-      
-    };
     return (
       
         <div style={{marginBottom: "50px"}}>
@@ -43,7 +47,7 @@ export default class Categories extends Component {
           </div>
           <Slider {...settings}>
             {arr.map((num) => (
-            <CardActionArea key={`cardArr${num}`}>
+            <CardActionArea key={`cardArr${num}`} onClick={() => selectCategory(num)}>
               <CardMedia
                 component="img"
                 height="100"
@@ -53,7 +57,7 @@ export default class Categories extends Component {
               />
               <CardContent sx={{paddingTop: "5px", paddingBottom: "10px"}}>
                 <Typography gutterBottom variant="p" component="div"  >
-                  Desayunos
+                  {num}
                 </Typography>
               </CardContent>
             </CardActionArea>))}
@@ -62,5 +66,7 @@ export default class Categories extends Component {
         </div>
    
     );
-  }
+  
 }
+
+export default Categories;
