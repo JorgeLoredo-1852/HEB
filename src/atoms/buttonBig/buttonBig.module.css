@@ -13,8 +13,8 @@
     color: white;
     text-align: center;
     position: relative;
-
   }
+
 
   .btn__secondary, .btn__secondary:link, .btn__secondary:visited {
     margin: 0.8rem 1.2rem;
@@ -34,11 +34,26 @@
     position: relative;
   }
 
+
+
   .btn__main:hover {
     transform: translateY(-0.3rem);
     box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.4);
     /* X-shadow, Y-shadow, blur, color of the shadow */
   }
+  
+  .btn__secondary:hover {
+    transform: translateY(-0.3rem);
+    box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.4);
+    /* X-shadow, Y-shadow, blur, color of the shadow */
+  }
+
+  .btn__main:active, .btn__main:focus, .btn__secondary:active, .btn__secondary:focus {
+    transform: translateY(0rem);
+    box-shadow: 0 0rem 0.2rem rgba(0, 0, 0, 0.4);
+    /* X-shadow, Y-shadow, blur, color of the shadow */
+  }
+
 
   .btn__container{
     position: fixed;
@@ -47,6 +62,7 @@
     display: flex;
     justify-content: center;
   }
+
 
   .btn__relative{
     width: 100%;

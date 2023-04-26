@@ -42,7 +42,15 @@ function IngredientList(props) {
         })
         setListInfo({...listInfo, ...data})
     }
-    console.log(listInfo)
+    
+    const onClickUnit = (itemData) => {
+        if (data.hasOwnProperty(`${itemData.nombre}`)) {
+            data[`${itemData.nombre}`] = data[`${itemData.nombre}`] + 1
+        } else {
+            data[`${itemData.nombre}`] = 1
+        }
+        setListInfo({...listInfo, ...data})
+    }
 
     return (
         <div>
@@ -55,7 +63,7 @@ function IngredientList(props) {
                     foodLists.map((itemData) => (
                         <Box key={itemData.nombre}>
                             <ListItem endAction={
-                                <IconButton sx={{mx: 2, color:"#DD2B22"}} aria-label="AddCircleRoundedIcon" variant="plain" size="lg" color="danger">
+                                <IconButton onClick={() => onClickUnit(itemData)} sx={{mx: 2, color:"#DD2B22"}} aria-label="AddCircleRoundedIcon" variant="plain" size="lg" color="danger">
                                     <AddCircleRoundedIcon sx={{ fontSize: "50px" }}/>
                                 </IconButton>
                             }>
