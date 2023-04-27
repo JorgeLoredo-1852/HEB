@@ -18,6 +18,8 @@ const Search = styled("div")(({ theme }) => ({
   border: "1px solid rgba(0,0,0,0.1)",
   marginRight: theme.spacing(2),
   marginLeft: 0,
+  paddingTop: "5px",
+  paddingBottom: "5px",
   width: "100%",
   [theme.breakpoints.up("sm")]: {
     marginLeft: theme.spacing(3),
@@ -34,6 +36,7 @@ const SearchIconWrapper = styled("div")(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
+  paddingBottom: "6px",
 }));
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
