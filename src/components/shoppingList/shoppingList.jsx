@@ -75,7 +75,7 @@ function ShoppingList() {
 
       <div className={styles.pricesDiv}>
         <div className={styles.subtotalDiv}>
-          <p>Precio Productos: </p>
+          <p>Precio productos: </p>
           <p>+ ${precio.toFixed(2)}</p>
         </div>
         <div className={styles.subtotalDiv}>
