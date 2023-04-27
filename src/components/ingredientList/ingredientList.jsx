@@ -18,6 +18,7 @@ import { useRouter } from 'next/router';
 
 function IngredientList(props) {
     const foodLists = props.foodLists;
+    const pasoList = props.pasos;
     const { listInfo, setListInfo } = useContext(ListContext)
     const [data, setData] = useState({})
 

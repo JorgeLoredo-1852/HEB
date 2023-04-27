@@ -30,14 +30,15 @@ export function GetCollection(col){
         getCollection(); 
     }, []);
 
-    return docs; // Regresa el arreglo con informacion de docs
+    return docs.length == 0?[]:docs; // Regresa el arreglo con informacion de docs
 }
 
 export function GetItem(col, id){
+
     const [docs, setDocs] = useState([]);
     const collectionReference = collection(db, col);
 
-    const q = query(collectionReference, where("id", "==", id));
+    const q = query(collectionReference, where("id", "==", parseInt(id)));
 
     const getItem = async() => {
         const data = await(getDocs(q))
@@ -45,7 +46,24 @@ export function GetItem(col, id){
     } 
 
     useEffect(() => {
-        getItem();
+        getItem(); 
+    }, []);
+    return docs;
+}
+
+export function GetItemArray(col, ids){
+    const [docs, setDocs] = useState([]);
+    const collectionReference = collection(db, col);
+
+    const q = query(collectionReference, where("id", "in", ids)); 
+
+    const getItemArray = async() =>  {
+        const data = await(getDocs(q))
+        setDocs(data.docs.map((doc) => ({...doc.data()})))
+    }
+
+    useEffect(() => {
+        getItemArray();
     }, []);
 
     return docs;

@@ -6,17 +6,18 @@ import ListItemDecorator from '@mui/joy/ListItemDecorator';
 import styles from "./recipeSteps.module.css";
 
 function RecipeSteps(props) {
-    const pasosList = props.pasosList;
+    var pasosList = props.pasosList;
     let nPaso = 0
 
-    return (
+    return pasosList.length == 0 ? <div>Loading...</div>:(
+        
         <div>
             <List
                 aria-labelledby="basic-list-demo"
-                sx={{ margin: "1rem 0.8rem", marginBottom: "7.5rem" }}
+                sx={{ margin: "1rem 0.8rem", marginBottom: "7.5rem" }} 
             >
                 {
-                    pasosList.map((pasosData) => {
+                    pasosList[0].pasos.map((pasosData) => {
 
                         nPaso = nPaso + 1
 
