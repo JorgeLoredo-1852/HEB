@@ -43,7 +43,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create("width"),
-    width: "100%",
+    width: "200px",
     [theme.breakpoints.up("md")]: {
       width: "30ch",
     },
@@ -69,7 +69,7 @@ const SearchBox = () => {
       <SearchIconWrapper>
         <SearchIcon />
       </SearchIconWrapper>
-      <form onSubmit={onSubmit}>
+      <form>
         <StyledInputBase
           onChange={(e) => {
             setSearchWord(e.target.value);
