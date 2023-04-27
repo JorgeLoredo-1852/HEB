@@ -29,6 +29,9 @@ function ShoppingList() {
     setPrecio(avg);
   }, [listInfo]);
 
+  const descuento = precio * 0.15;
+  const total = precio - descuento;
+
   return (
     <div>
       <List aria-labelledby="basic-list-demo">
@@ -73,19 +76,16 @@ function ShoppingList() {
       <div className={styles.pricesDiv}>
         <div className={styles.subtotalDiv}>
           <p>Precio Productos: </p>
-          <p>+ ${Math.round(precio)}</p>
+          <p>+ ${precio.toFixed(2)}</p>
         </div>
         <div className={styles.subtotalDiv}>
           <p>Descuentos: </p>
-          <p>- ${Math.round(precio * 0.15)}</p>
+          <p>- ${descuento.toFixed(2)}</p>
         </div>
       </div>
       <div className={styles.totalDiv}>
         <h1 className={styles.totalLetter}> Total: </h1>
-        <h1 className={styles.totalLetter}>
-          {" "}
-          $ {Math.round(precio - precio * 0.15)}{" "}
-        </h1>
+        <h1 className={styles.totalLetter}> $ {total.toFixed(2)} </h1>
       </div>
     </div>
   );
