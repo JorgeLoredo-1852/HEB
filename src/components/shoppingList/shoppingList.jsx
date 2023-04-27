@@ -10,6 +10,9 @@ import ListContext from "@/hooks/ListContext";
 import { useState } from "react";
 import { useEffect } from "react";
 import styles from "./shoppingList.module.css";
+import BigButton from "@/atoms/buttonBig/buttonBig";
+import { useRouter } from 'next/router';
+
 
 function ShoppingList() {
   const { listInfo, setListInfo } = useContext(ListContext);
@@ -31,6 +34,12 @@ function ShoppingList() {
 
   const descuento = precio * 0.15;
   const total = precio - descuento;
+
+  const router = useRouter();
+
+  const onClick = () => {
+    router.push("/");
+  };
 
   return (
     <div>
@@ -87,7 +96,14 @@ function ShoppingList() {
         <h1 className={styles.totalLetter}> Total: </h1>
         <h1 className={styles.totalLetter}> $ {total.toFixed(2)} </h1>
       </div>
+      <BigButton
+        color="main"
+        callback={onClick}
+        text="Desbloquear descuentos"
+        sx={{ marginBottom: "10px" }}
+      />
     </div>
+
   );
 }
 
