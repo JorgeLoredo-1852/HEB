@@ -54,7 +54,13 @@ a {
   margin-top: 2rem; 
 }
 
-.MuiCardContent-root css-46bh2p-MuiCardContent-root > div {
+.MuiCardContent-root div {
   margin-top: 0;
   padding-top: 0;
 }
+
+.MuiCardContent-root {
+ 
+  padding-bottom: 12px !important;
+}
+

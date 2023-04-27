@@ -22,13 +22,21 @@ const arr = [
   "Bebidas",
   "Rápida",
   "Postres",
+  "Desayunos",
+  "Comidas",
+  "Cenas",
+  "Aperitivos",
+  "Antojitos",
+  "Bebidas",
+  "Rápida",
+  "Postres",
 ];
 const settings = {
   className: "center",
-  centerMode: false,
+  
   infinite: false,
-  slidesToShow: 3,
-  speed: 700,
+  slidesToShow: 3.1,
+  speed: 1000,
   rows: 2,
   slidesPerRow: 1,
   swipeToSlide: true,
@@ -64,7 +72,7 @@ const Categories = () => {
               image="/images/food.png"
               sx={{ borderRadius: "16px" }}
             />
-            <CardContent sx={{ paddingTop: "5px", paddingBottom: "10px" }}>
+            <CardContent sx={{ paddingTop: "5px", paddingBottom: "10px", width: "100%", textAlign: "center" }}>
               <Typography gutterBottom variant="p" component="div">
                 {num}
               </Typography>

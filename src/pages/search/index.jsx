@@ -1,6 +1,7 @@
 import SearchContext from "@/hooks/SearchContext"
 import SearchBox from "@/molecules/searchBox/searchBox"
-import { Grid } from "@mui/material"
+import SearchCategories from "@/components/searchCategories/search-categories"
+import { Grid, Typography } from "@mui/material"
 import { useContext } from "react"
 import { useState } from "react"
 
@@ -12,10 +13,12 @@ const Search = () => {
     <div style={{padding:"1.5rem", marginTop:"3rem"}}>
         <SearchBox/>
         <Grid container>
-            <Grid xs = {12}>
-                <div>{searchInfo}</div>
+            <Grid xs = {12} sx= {{marginBottom: "15px", marginTop: "5px"}}>
+                <Typography variant="h6" fontWeight="bolder" >Categorias principales</Typography>
             </Grid>
         </Grid>
+        <SearchCategories/>
+
     </div>)
 }
 
