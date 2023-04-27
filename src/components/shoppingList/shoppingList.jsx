@@ -36,7 +36,7 @@ function ShoppingList() {
     <div>
       <List aria-labelledby="basic-list-demo">
         {Object.values(listInfo).map((itemData) => (
-          <Box key={itemData.nombre}>
+          ( itemData.quantity > 0 && (<Box key={itemData.nombre}>
             <ListItem
               endAction={
                 <p style={{ fontSize: "20px", paddingRight: "20px" }}>
@@ -69,7 +69,7 @@ function ShoppingList() {
             ) : (
               <ListDivider inset="gutter" />
             )}
-          </Box>
+          </Box>))
         ))}
       </List>
 
