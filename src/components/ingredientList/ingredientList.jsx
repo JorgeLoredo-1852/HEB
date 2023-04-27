@@ -68,7 +68,7 @@ function IngredientList(props) {
         quantity: data[`${itemData.nombre}`]["quantity"] - 1,
       };
     } else {
-      data[`${itemData.nombre}`] = { ...itemData, quantity: 1 };
+      data[`${itemData.nombre}`] = { ...itemData, quantity: 0 };
     }
     if (data[`${itemData.nombre}`].quantity < 0) {
       data[`${itemData.nombre}`].quantity = 0;
