@@ -74,7 +74,7 @@ const SearchBox = () => {
           onChange={(e) => {
             setSearchWord(e.target.value);
           }}
-          placeholder="¿De que tienes antojo?"
+          placeholder="¿De qué tienes antojo?"
           inputProps={{ "aria-label": "search" }}
         />
       </form>
