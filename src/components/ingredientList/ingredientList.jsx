@@ -6,7 +6,7 @@ import ListItemDecorator from '@mui/joy/ListItemDecorator';
 import Stack from '@mui/joy/Stack';
 import ListDivider from '@mui/joy/ListDivider';
 import IconButton from '@mui/joy/IconButton';
-import AddCircleRoundedIcon from '@mui/icons-material/AddCircleRounded';
+import { Add } from '@mui/icons-material';
 import BigButton from '@/atoms/buttonBig/buttonBig';
 import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 import { useContext } from 'react';
@@ -14,12 +14,15 @@ import ListContext from '@/hooks/ListContext';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
+import { Remove } from '@mui/icons-material';
 
 
 function IngredientList(props) {
     const foodLists = props.foodLists;
     const { listInfo, setListInfo } = useContext(ListContext)
     const [data, setData] = useState({})
+    const [cantidad, setCantidad] = useState(0)
+    let n = 0;
 
     useEffect(() => {
         setData({...listInfo})
@@ -54,6 +57,18 @@ function IngredientList(props) {
         setListInfo({...listInfo, ...data})
     }
 
+    const onClickUnitMinus = (itemData) => {
+        if (data.hasOwnProperty(`${itemData.nombre}`)) {
+            data[`${itemData.nombre}`] = {...data[`${itemData.nombre}`], quantity: data[`${itemData.nombre}`]['quantity'] - 1}
+        } else {
+            data[`${itemData.nombre}`] = {...itemData, quantity: 1}
+        }
+        if (data[`${itemData.nombre}`].quantity < 0){
+            data[`${itemData.nombre}`].quantity = 0
+        }
+        setListInfo({...listInfo, ...data})
+    }
+
     return (
         <div>
             <BigButton color="secondary" callback={onClick} position="relative" text="Agregar Todo" icon={<PlaylistAddIcon sx={{fontSize: '1.8rem'}}/>}/>
@@ -63,11 +78,20 @@ function IngredientList(props) {
             >
                 {
                     foodLists.map((itemData) => (
-                        <Box key={itemData.nombre}>
+                        <Box sx={{paddingRight: "15px"}}key={itemData.nombre}>
                             <ListItem endAction={
-                                <IconButton onClick={() => onClickUnit(itemData)} sx={{mx: 2, color:"#DD2B22"}} aria-label="AddCircleRoundedIcon" variant="plain" size="lg" color="danger">
-                                    <AddCircleRoundedIcon sx={{ fontSize: "50px" }}/>
-                                </IconButton>
+                                <Box style={{columns: "3", display: "flex"}} sx={{borderRadius: "15px", border: "1px solid #88888863"}}>
+                                    <IconButton onClick ={() => onClickUnitMinus(itemData)} aria-label='Remove' color='danger' size='sm' variant='plain'>
+                                        <Remove sx={{ paddingLeft: "2px", fontSize: "20px"}}/>
+                                    </IconButton>
+                                    <div style={{paddingTop: "5px", paddingLeft: "7px", paddingRight: "7px", fontWeight: "700"}}>{listInfo[`${itemData.nombre}`] ? listInfo[`${itemData.nombre}`].quantity : 0}</div>
+                                    {console.log( )}
+                                    <IconButton onClick={() => onClickUnit(itemData)} sx={{ color:"#DD2B22"}} aria-label="Add" variant="plain" size="sm" color="danger">
+                                        <Add sx={{ fontSize: "20px" }}/>
+                                    </IconButton>
+                                </Box>
+                                
+                                
                             }>
                                 <ListItemDecorator sx={{ alignSelf: 'center', marginRight: "0.5rem" }}>
                                     <Box component="img" src={itemData.imagen} sx={{ width: "90px", maxHeight: "100%" }}></Box>
