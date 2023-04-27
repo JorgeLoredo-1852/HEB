@@ -45,24 +45,24 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     transition: theme.transitions.create("width"),
     width: "100%",
     [theme.breakpoints.up("md")]: {
-      width: "20ch",
+      width: "30ch",
     },
   },
 }));
 
 const SearchBox = () => {
-  const { searchInfo, setSearchInfo } = useContext(SearchContext)
-  const [searchWord, setSearchWord] = useState("")
-  const router = useRouter()
+  const { searchInfo, setSearchInfo } = useContext(SearchContext);
+  const [searchWord, setSearchWord] = useState("");
+  const router = useRouter();
 
   const onSubmit = (e) => {
-    e.preventDefault()
-    if(router.asPath != "/search"){
-      router.push("/search")
+    e.preventDefault();
+    if (router.asPath != "/search") {
+      router.push("/search");
     }
-    setSearchInfo(searchWord)
-    console.log(searchWord)
-  }
+    setSearchInfo(searchWord);
+    console.log(searchWord);
+  };
 
   return (
     <Search>
@@ -70,11 +70,14 @@ const SearchBox = () => {
         <SearchIcon />
       </SearchIconWrapper>
       <form onSubmit={onSubmit}>
-      <StyledInputBase
-        onChange={(e) => {setSearchWord(e.target.value)}}
-        placeholder="¿De que tienes antojo?"
-        inputProps={{ "aria-label": "search" }}
-      /></form>
+        <StyledInputBase
+          onChange={(e) => {
+            setSearchWord(e.target.value);
+          }}
+          placeholder="¿De que tienes antojo?"
+          inputProps={{ "aria-label": "search" }}
+        />
+      </form>
     </Search>
   );
 };
