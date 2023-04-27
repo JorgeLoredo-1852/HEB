@@ -47,7 +47,7 @@ const Categories = () => {
   return (
     <div style={{ marginBottom: "50px" }}>
       <div className={styles.container}>
-        <div className={styles.title}>Categorias</div>
+        <div className={styles.title}>Categoriasç</div>
         <Link href={""}>
           <div className={styles.btn}>Ver todo</div>
         </Link>

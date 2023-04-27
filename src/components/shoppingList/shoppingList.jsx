@@ -13,23 +13,33 @@ import styles from "./shoppingList.module.css";
 
 function ShoppingList() {
   const { listInfo, setListInfo } = useContext(ListContext);
+  const [precio, setPrecio] = useState(0);
 
   const [data, setData] = useState({});
   useEffect(() => {
     setData({ ...listInfo });
   }, []);
 
-  console.log(Object.values(listInfo)[0])
-
+  useEffect(() => {
+    let avg = 0;
+    for (let i = 0; i < Object.values(listInfo).length; i++) {
+      avg +=
+        Object.values(listInfo)[i].precio * Object.values(listInfo)[i].quantity;
+    }
+    setPrecio(avg);
+  }, [listInfo]);
 
   return (
     <div>
       <List aria-labelledby="basic-list-demo">
-        { Object.values(listInfo).map((itemData) => (
+        {Object.values(listInfo).map((itemData) => (
           <Box key={itemData.nombre}>
             <ListItem
               endAction={
-                <p style={{ fontSize: "20px", paddingRight: "20px" }}> {itemData.quantity} </p>
+                <p style={{ fontSize: "20px", paddingRight: "20px" }}>
+                  {" "}
+                  {itemData.quantity}{" "}
+                </p>
               }
             >
               <ListItemDecorator
@@ -49,7 +59,9 @@ function ShoppingList() {
                 </Box>
               </Stack>
             </ListItem>
-            {itemData.nombre == Object.values(listInfo)[Object.values(listInfo).length - 1].nombre ? (
+            {itemData.nombre ==
+            Object.values(listInfo)[Object.values(listInfo).length - 1]
+              .nombre ? (
               <></>
             ) : (
               <ListDivider inset="gutter" />
@@ -60,17 +72,20 @@ function ShoppingList() {
 
       <div className={styles.pricesDiv}>
         <div className={styles.subtotalDiv}>
-          <p>IVA: </p>
-          <p>+ $160.00</p>
+          <p>Precio Productos: </p>
+          <p>+ ${Math.round(precio)}</p>
         </div>
         <div className={styles.subtotalDiv}>
           <p>Descuentos: </p>
-          <p>- $323.00</p>
+          <p>- ${Math.round(precio * 0.15)}</p>
         </div>
       </div>
       <div className={styles.totalDiv}>
         <h1 className={styles.totalLetter}> Total: </h1>
-        <h1 className={styles.totalLetter}> $1,700.00 </h1>
+        <h1 className={styles.totalLetter}>
+          {" "}
+          $ {Math.round(precio - precio * 0.15)}{" "}
+        </h1>
       </div>
     </div>
   );
