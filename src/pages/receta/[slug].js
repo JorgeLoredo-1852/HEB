@@ -3,9 +3,7 @@ import HeaderImg from "@/molecules/header/HeaderImg";
 import RecipeTabs from "@/molecules/recipeTabs/RecipeTabs";
 import IngredientList from "@/components/ingredientList/ingredientList";
 import RecipeSteps from "@/components/recipeSteps/recipeSteps";
-import { useRouter } from "next/router";
 import { GetCollection, GetItem } from "../../api/firebase";
-import steps from "@/components/recipeSteps/steps";
 
 const Receta = () => {
   const [tab, setTab] = useState(0);
