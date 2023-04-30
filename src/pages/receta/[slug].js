@@ -42,7 +42,9 @@ const Receta = () => {
     if(!slug){
       return
     }
-    getItemArray();
+    if(docsPasos.length > 0){
+      getItemArray();
+    }
   }, [docsPasos])
   
     const handleChange = (val) => {
