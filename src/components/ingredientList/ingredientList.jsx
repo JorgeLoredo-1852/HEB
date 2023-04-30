@@ -31,24 +31,6 @@ function IngredientList(props) {
 
   const router = useRouter();
 
-  const onClick2 = () => {
-    router.push("/list");
-  };
-
-  const onClick = () => {
-    foodLists.map((ingredient) => {
-      if (data.hasOwnProperty(`${ingredient.nombre}`)) {
-        data[`${ingredient.nombre}`] = {
-          ...data[`${ingredient.nombre}`],
-          quantity: data[`${ingredient.nombre}`]["quantity"] + 1,
-        };
-      } else {
-        data[`${ingredient.nombre}`] = { ...ingredient, quantity: 1 };
-      }
-    });
-    setListInfo({ ...listInfo, ...data });
-  };
-
   //console.log(listInfo)
 
   const onClickUnit = (itemData) => {
@@ -80,13 +62,6 @@ function IngredientList(props) {
 
   return (
     <div>
-      <BigButton
-        color="secondary"
-        callback={onClick}
-        position="relative"
-        text="Agregar Todo"
-        icon={<PlaylistAddIcon sx={{ fontSize: "1.8rem" }} />}
-      />
       <List aria-labelledby="basic-list-demo" sx={{ marginBottom: "7.5rem" }}>
         {foodLists.map((itemData) => (
           <Box sx={{ paddingRight: "15px" }} key={itemData.nombre}>
@@ -156,12 +131,6 @@ function IngredientList(props) {
           </Box>
         ))}
       </List>
-      <BigButton
-        color="main"
-        callback={onClick2}
-        position="fixed"
-        text="Ver mi Lista"
-      />
     </div>
   );
 }

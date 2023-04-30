@@ -4,7 +4,7 @@
     width: 80%;
     text-decoration: none;
     display: inline-block;
-    border-radius: 10rem;
+    border-radius: 1.6rem;
     transition: all 0.2s;
     font-size: 1rem;
     border: none;
@@ -17,12 +17,9 @@
 
 
   .btn__secondary, .btn__secondary:link, .btn__secondary:visited {
-    margin: 0.8rem 1.2rem;
-    padding: 0.8rem;
-    width: 100%;
     text-decoration: none;
-    display: inline-block;
-    border-radius: 10rem;
+    display: flex;
+    border-radius: 1.6rem;
     transition: all 0.2s;
     font-size: 1rem;
     border: none;
@@ -32,6 +29,10 @@
     text-align: center;
     border: 2px solid var(--red-main);
     position: relative;
+
+    width: 100%;
+    align-items: center;
+    justify-content: center;
   }
 
 
@@ -68,4 +69,6 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    height: 100%;
+    align-self: stretch;
   }

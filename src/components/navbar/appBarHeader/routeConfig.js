@@ -7,7 +7,7 @@ export const routeConfig = [
   {
     path: "/receta",
     showBackButton: true,
-    showListButton: false,
+    showListButton: true,
   },
   {
     path: "/search",

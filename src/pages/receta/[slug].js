@@ -8,6 +8,7 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { collection, getDocs, query, where } from "firebase/firestore/lite";
 import { db } from "../../api/firebase";
+import RecipeDetails from "@/components/recipeDetails/recipeDetails";
 
 const Receta = () => {
   const [tab, setTab] = useState(0);  
@@ -58,6 +59,7 @@ const Receta = () => {
         height="240px"
         texto="Hamburguesa"
       />
+      <RecipeDetails foodLists={docsIngredients}/>
       <RecipeTabs handleChange={handleChange} />
       {tab == 0 ? (
         <IngredientList foodLists={docsIngredients} />
