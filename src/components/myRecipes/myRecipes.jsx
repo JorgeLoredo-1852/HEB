@@ -61,7 +61,7 @@ const MyRecipes = () => {
                 {
                     listOfData.map((recipe) => (
                         <SwiperSlide key={recipe.id} onClick={()=>{handleClick(`/receta/${recipe.id}`)}} className={styles.swiperSlideMy}>
-                            <div className={styles.swiperOverlay} style={{backgroundImage: `linear-gradient(to right bottom, rgba(0,0,0,0.45), rgba(0, 0, 0, 0.45)), url(${recipe.img})`}}></div>
+                            <div className={styles.swiperOverlay} style={{backgroundImage: `linear-gradient(to right bottom, rgba(0,0,0,0.3), rgba(0, 0, 0, 0.3)), url(${recipe.img})`}}></div>
                             <div className={styles.swiperTitle}>{recipe.name}</div>
                             <div className={styles.cookingTime}>
                                 <div className={styles.timeContainer}>

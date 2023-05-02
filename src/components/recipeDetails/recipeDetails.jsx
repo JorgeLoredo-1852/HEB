@@ -12,7 +12,7 @@ const RecipeDetails = ({foodLists}) => {
 
   useEffect(() => {
     setData({ ...listInfo });
-  }, []);
+  }, [listInfo]);
 
 
   const onClick = () => {
@@ -28,6 +28,8 @@ const RecipeDetails = ({foodLists}) => {
     });
     setListInfo({ ...listInfo, ...data });
   };
+
+  console.log(data)
     return(
         <div style={{margin:"0.8rem 1rem"}}>
         <Grid container columnSpacing={1} sx={{display:"flex", alignItems:"stretch"}}>

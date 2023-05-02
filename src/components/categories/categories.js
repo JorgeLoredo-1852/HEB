@@ -1,0 +1,18 @@
+export const arr = [
+    "Desayunos",
+    "Comidas",
+    "Cenas",
+    "Aperitivos",
+    "Antojitos",
+    "Bebidas",
+    "Rápida",
+    "Postres",
+    "Desayunos",
+    "Comidas",
+    "Cenas",
+    "Aperitivos",
+    "Antojitos",
+    "Bebidas",
+    "Rápida",
+    "Postres",
+  ];

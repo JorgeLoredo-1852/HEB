@@ -46,12 +46,14 @@ const PopularRecipes = () => {
           <div className={styles.btn}>Ver todo</div>
         </Link>
       </div>
+      <div style={{height: "15.5rem"}}>
       <Swiper
         grabCursor={true}
         freeMode={true}
         modules={[FreeMode]}
         spaceBetween={10}
         slidesPerView={cardNum}
+        style={{height:"100%", width:"100%"}}
       >
         {listOfData.map((recipe) => (
           <SwiperSlide
@@ -61,8 +63,8 @@ const PopularRecipes = () => {
             }}
             className={styles.swiperSlide}
           >
-            <Image src="/images/burger.jpg" width={230} height={230} alt="a" />
-            <div className={styles.swiperOverlay}></div>
+            
+            <div className={styles.swiperOverlay} style={{backgroundImage: `linear-gradient(to right bottom, rgba(0,0,0,0.3), rgba(0, 0, 0, 0.3)), url(${recipe.img})`}}></div>
             <div className={styles.swiperTitle}>Hamburguesa</div>
             <div className={styles.cookingTime}>
               <div className={styles.timeContainer}>
@@ -76,6 +78,7 @@ const PopularRecipes = () => {
           </SwiperSlide>
         ))}
       </Swiper>
+      </div>
     </>
   );
 };

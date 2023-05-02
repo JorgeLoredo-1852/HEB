@@ -27,7 +27,7 @@ function IngredientList(props) {
 
   useEffect(() => {
     setData({ ...listInfo });
-  }, []);
+  }, [listInfo]);
 
   const router = useRouter();
 

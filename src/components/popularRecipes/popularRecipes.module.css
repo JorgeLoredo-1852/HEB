@@ -25,14 +25,19 @@
   position: relative;
 }
 
-.swiperOverlay {
+.swiperOverlay{
+  height: 100px;
   position: absolute;
-  opacity: 0.45;
+  /*opacity: 0.45;*/
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: black;
-}
+  background-size: cover;
+  background-position: center;
+  /*background-color: black;*/
+}   
+
+
 
 .swiperTitle {
   position: absolute;
