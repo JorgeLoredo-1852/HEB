@@ -21,7 +21,7 @@ const poppins = Poppins({ weight: '400', subsets: ['latin'] })
 
 export default function App({ Component, pageProps }) {
   const [lInfo, setLInfo] = useState({})
-  const [sInfo, setSInfo] = useState("Show Categories")
+  const [sInfo, setSInfo] = useState("")
 
   return (
     <ListContext.Provider value={{listInfo: lInfo, setListInfo: setLInfo}}>

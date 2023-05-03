@@ -72,7 +72,7 @@ const SearchBox = () => {
       <SearchIconWrapper>
         <SearchIcon />
       </SearchIconWrapper>
-      <form>
+      <form onSubmit={onSubmit}>
         <StyledInputBase
           onChange={(e) => {
             setSearchWord(e.target.value);

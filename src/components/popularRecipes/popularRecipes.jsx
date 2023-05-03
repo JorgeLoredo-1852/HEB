@@ -46,7 +46,7 @@ const PopularRecipes = () => {
           <div className={styles.btn}>Ver todo</div>
         </Link>
       </div>
-      <div style={{height: "15.5rem"}}>
+      <div style={{height: "15rem"}}>
       <Swiper
         grabCursor={true}
         freeMode={true}

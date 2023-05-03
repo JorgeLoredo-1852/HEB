@@ -9,41 +9,34 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import style from "./search-categories.module.css"
 
-const arr = [
-    "Desayunos",
-    "Comidas",
-    "Cenas",
-    "Aperitivos",
-    "Antojitos",
-    "Bebidas",
-    "Rápida",
-    "Postres",
-    "Desayunos",
-    "Comidas",
-    "Cenas",
-    "Aperitivos",
-    "Antojitos",
-    "Bebidas",
-    "Rápida",
-    "Postres",
-  ];
-
+import { arr } from '../categories/arr';
+import { useContext } from 'react';
+import SearchContext from '@/hooks/SearchContext';
 
 export default function SearchCategories() {
+
+
+  const { searchInfo, setSearchInfo } = useContext(SearchContext);
+
+  const selectCategory = (category) => {
+    setSearchInfo(category);
+  };
+
+
   return (
     <Box sx={{ width: '100%', marginLeft: "28px"}}>
       <Grid container columnSpacing={{ xs: 4, sm: 4, md: 0 }} >
        {arr.map((num) => ( 
-       <Grid CardMedia xs={5} sx={{ mx: "10px"}}>
+       <Grid CardMedia xs={5} sx={{ mx: "10px"}} onClick={() => selectCategory(num.name)}>
                 <CardMedia
                 component="img"
                 height="120"
-                image="/images/food.png"
+                image={num.img}
                 sx={{ borderRadius: "14px", padding: "0px"}}
                 />
                 <CardContent sx={{ paddingTop: "5px", paddingBottom: "0px",  width: "100%", textAlign: "center"}}>
                     <Typography variant="p" fontSize={"14px"}>
-                        {num}
+                        {num.name}
                     </Typography>
                 </CardContent>
         </Grid> ))}

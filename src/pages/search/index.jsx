@@ -12,12 +12,18 @@ const Search = () => {
     return (
     <div style={{padding:"1.5rem", marginTop:"3rem"}}>
         <SearchBox/>
-        <Grid container>
-            <Grid xs = {12} sx= {{marginBottom: "15px", marginTop: "5px"}}>
-                <Typography variant="h6" fontWeight="bolder" >Categorias principales</Typography>
-            </Grid>
-        </Grid>
-        <SearchCategories/>
+        {searchInfo ? 
+            <div>
+                {searchInfo}
+            </div> : 
+            <div>
+                <Grid container>
+                    <Grid xs = {12} sx= {{marginBottom: "15px", marginTop: "5px"}}>
+                        <Typography variant="h6" fontWeight="bolder" >Categorias principales</Typography>
+                    </Grid>
+                </Grid>
+                <SearchCategories/>
+            </div>}
 
     </div>)
 }

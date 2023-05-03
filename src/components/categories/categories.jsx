@@ -20,7 +20,6 @@ import { arr } from "./arr";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode } from "swiper";
 import { Grid, Pagination } from "swiper";
-import { listOfData } from "../popularRecipes/recipes";
 
 const Categories = () => {
   const { searchInfo, setSearchInfo } = useContext(SearchContext);
@@ -48,12 +47,12 @@ const Categories = () => {
         style={{height:"100%", width:"100%"}}
         className={styles.swiper}
       >
-        {listOfData.map((recipe) => (
-          <SwiperSlide key={recipe.id} onClick={()=>{handleClick(`/receta/${recipe.id}`)}} className={styles.swiperSlide}>
-            <div style={{width:"100%", height:"100%", position: "relative"}}>
-              <div className={styles.swiperOverlay} style={{backgroundImage: `linear-gradient(to right bottom, rgba(0,0,0,0.3), rgba(0, 0, 0, 0.3)), url(${recipe.img})`}}></div>
-            </div>
-            <div className={styles.swiperTitle}>Desayuno</div>
+        {arr.map((category) => (
+          <SwiperSlide key={category.id} onClick={()=>{selectCategory(category.name)}} className={styles.swiperSlide}>
+              <div style={{width:"100%", height:"100%", position: "relative", cursor:"pointer"}} >
+                <div className={styles.swiperOverlay} style={{backgroundImage: `linear-gradient(to right bottom, rgba(0,0,0,0.3), rgba(0, 0, 0, 0.3)), url(${category.img})`}}></div>
+              </div>
+              <div className={styles.swiperTitle}>{category.name}</div>
           </SwiperSlide>
         ))}
       </Swiper>
