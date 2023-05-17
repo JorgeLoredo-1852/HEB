@@ -6,17 +6,6 @@ import { Poppins } from '@next/font/google'
 import { useState } from 'react'
 import SearchContext from '@/hooks/SearchContext'
 
-
-/*
-async function getCities(db) {
-  const citiesCol = collection(db, 'Ingredientes');
-  const citySnapshot = await getDocs(citiesCol);
-  const cityList = citySnapshot.docs.map(doc => doc.data());
-  return cityList;
-}
-
-console.log(getCities(db))*/
-
 const poppins = Poppins({ weight: '400', subsets: ['latin'] })
 
 export default function App({ Component, pageProps }) {

@@ -2,9 +2,9 @@ import ARComponents from "@/AR/ARComponents"
 
 const Prizes = () => {
     return (
-    <>
-        {/*<ARComponents/>*/}
-    </>
+    <div style={{width:"100vw", height:"100vh", overflow:"hidden"}}>
+        <ARComponents/>
+    </div>
     )
 }
 
