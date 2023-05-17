@@ -68,8 +68,8 @@ const PopularRecipes = () => {
             className={styles.swiperSlide}
           >
             
-            <div className={styles.swiperOverlay} style={{backgroundImage: `linear-gradient(to right bottom, rgba(0,0,0,0.3), rgba(0, 0, 0, 0.3)), url(${recetas[(recipe.id%recetas.length)].imagen})`}}></div>
-            <div className={styles.swiperTitle}>{recetas[(recipe.id%recetas.length)].nombre}</div>
+            <div className={styles.swiperOverlay} style={{backgroundImage: `linear-gradient(to right bottom, rgba(0,0,0,0.3), rgba(0, 0, 0, 0.3)), url(${recetas.filter(receta => receta.id == (recipe.id%recetas.length)).map(rec => rec.imagen)})`}}></div>
+            <div className={styles.swiperTitle}>{recetas.filter(receta => receta.id == (recipe.id%recetas.length)).map(rec => rec.nombre)}</div>
             <div className={styles.cookingTime}>
               <div className={styles.timeContainer}>
                 <AccessTimeIcon fontSize="medium" sx={{ color: "white" }} />
