@@ -67,7 +67,8 @@ export function GetItemArray(col, ids){
 
     return docs;
 }
-
+// Col, es colección, recetas/ingredientes, tag el query
+//regresa arreglo con documentos
 export function GetFilter(col, tag){
     const [docs, setDocs] = useState([]);
     const collectionReference = collection(db, col);
@@ -85,7 +86,7 @@ export function GetFilter(col, tag){
 
     return docs;
 }
-
+//tag es un arreglo, para buscar con varios tags
 export function GetFilterAny(col, tag){
     const [docs, setDocs] = useState([]);
     const collectionReference = collection(db, col);
