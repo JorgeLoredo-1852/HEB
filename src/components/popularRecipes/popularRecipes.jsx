@@ -12,6 +12,7 @@ import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import { useRouter } from "next/router";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import {GetCollection} from "../../api/firebase.js";
 
 const PopularRecipes = () => {
   const router = useRouter();
@@ -20,7 +21,10 @@ const PopularRecipes = () => {
   const downLg = useMediaQuery(themeM.breakpoints.down("lg"));
   const downMd = useMediaQuery(themeM.breakpoints.down("md"));
   const downSm = useMediaQuery(themeM.breakpoints.down("sm"));
-  const [cardNum, setCardNum] = useState(10);
+  const [cardNum, setCardNum] = useState(10);   
+  const recetas = GetCollection("Recetas");
+
+  console.log(recetas);
 
   useEffect(() => {
     if (downLg && downMd && downSm) {
@@ -38,7 +42,7 @@ const PopularRecipes = () => {
     router.push(link);
   };
 
-  return (
+  return recetas.length == 0 ? (<div>Loading...</div>) : (
     <>
       <div className={styles.container}>
         <div className={styles.title}>Recetas más Populares</div>
@@ -59,13 +63,13 @@ const PopularRecipes = () => {
           <SwiperSlide
             key={recipe.id}
             onClick={() => {
-              handleClick(`/receta/${recipe.id}`);
+              handleClick(`/receta/${recipe.id%recetas.length}`);
             }}
             className={styles.swiperSlide}
           >
             
-            <div className={styles.swiperOverlay} style={{backgroundImage: `linear-gradient(to right bottom, rgba(0,0,0,0.3), rgba(0, 0, 0, 0.3)), url(${recipe.img})`}}></div>
-            <div className={styles.swiperTitle}>Hamburguesa</div>
+            <div className={styles.swiperOverlay} style={{backgroundImage: `linear-gradient(to right bottom, rgba(0,0,0,0.3), rgba(0, 0, 0, 0.3)), url(${recetas[(recipe.id%recetas.length)].imagen})`}}></div>
+            <div className={styles.swiperTitle}>{recetas[(recipe.id%recetas.length)].nombre}</div>
             <div className={styles.cookingTime}>
               <div className={styles.timeContainer}>
                 <AccessTimeIcon fontSize="medium" sx={{ color: "white" }} />

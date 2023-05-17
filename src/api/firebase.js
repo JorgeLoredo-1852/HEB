@@ -67,3 +67,39 @@ export function GetItemArray(col, ids){
 
     return docs;
 }
+
+export function GetFilter(col, tag){
+    const [docs, setDocs] = useState([]);
+    const collectionReference = collection(db, col);
+
+    const q = query(collectionReference, where("tags", "array-contains", tag));
+
+    const getItemArray = async() => {
+        const data = await(getDocs(q))
+        setDocs(data.docs.map((doc) => ({...doc.data()})))
+    }
+
+    useEffect(()=> {
+        getItemArray();
+    }, []);
+
+    return docs;
+}
+
+export function GetFilterAny(col, tag){
+    const [docs, setDocs] = useState([]);
+    const collectionReference = collection(db, col);
+
+    const q = query(collectionReference, where("tags", "array-contains-any", tag));
+
+    const getItemArray = async() => {
+        const data = await(getDocs(q))
+        setDocs(data.docs.map((doc) => ({...doc.data()})))
+    }
+
+    useEffect(()=> {
+        getItemArray();
+    }, []);
+    
+    return docs;
+}
