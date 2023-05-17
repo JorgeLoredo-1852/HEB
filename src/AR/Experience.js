@@ -52,6 +52,7 @@ class ARExperience{
             this.puntaje = 1
             this.text3D = null
             this.createText()
+            this.end = false
 
             window.addEventListener('resize', this.resize.bind(this) );
         }
@@ -186,13 +187,21 @@ class ARExperience{
         this.moveBalls()
         this.checkCollisions()
         this.getPuntaje()
-
-        if(this.puntaje >= 2){
-            const xr = navigator.xr
-            xr.baseExperience.exitXRAsync()
-        }
+        this.loadFinishModel()
 
         this.renderer.render( this.scene, this.camera );
+    }
+
+    loadFinishModel(){
+        if(this.puntaje >= 10 && this.end == false){
+            const gltfLoader = new GLTFLoader();
+            gltfLoader.load("/end.glb", (gltf) => {
+                const finalMessage = gltf.scene
+                finalMessage.position.z = -1.2
+                this.scene.add(finalMessage)
+            })
+            this.end = true
+        }
     }
 
     getPuntaje(){

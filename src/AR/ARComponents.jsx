@@ -60,7 +60,7 @@ const ARComponents = () => {
                                 />
                             </div>
                             <div style={{marginTop:"1rem", width:"100%", textAlign:"center"}}>
-                                Rompe 15 globos y gánate hasta 15 de descuento en tu carrito
+                                Rompe 10 globos y gánate hasta 10 de descuento en tu carrito
                             </div>
                             <div style={{marginTop:"4rem", width:"100%", textAlign:"center", fontSize:"0.8rem", color:"grey"}}>
                                 Aún no juegas tu partida de la semana
