@@ -12,7 +12,7 @@ import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import { useRouter } from "next/router";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import {GetCollection} from "../../api/firebase.js";
+import { GetCollection } from "../../api/firebase.js";
 
 const PopularRecipes = () => {
   const router = useRouter();
@@ -21,7 +21,7 @@ const PopularRecipes = () => {
   const downLg = useMediaQuery(themeM.breakpoints.down("lg"));
   const downMd = useMediaQuery(themeM.breakpoints.down("md"));
   const downSm = useMediaQuery(themeM.breakpoints.down("sm"));
-  const [cardNum, setCardNum] = useState(10);   
+  const [cardNum, setCardNum] = useState(10);
   const recetas = GetCollection("Recetas");
 
   console.log(recetas);
@@ -42,7 +42,9 @@ const PopularRecipes = () => {
     router.push(link);
   };
 
-  return recetas.length == 0 ? (<div>Loading...</div>) : (
+  return recetas.length == 0 ? (
+    <div>Loading...</div>
+  ) : (
     <>
       <div className={styles.container}>
         <div className={styles.title}>Recetas más Populares</div>
@@ -50,38 +52,54 @@ const PopularRecipes = () => {
           <div className={styles.btn}>Ver todo</div>
         </Link>
       </div>
-      <div style={{height: "15rem"}}>
-      <Swiper
-        grabCursor={true}
-        freeMode={true}
-        modules={[FreeMode]}
-        spaceBetween={10}
-        slidesPerView={cardNum}
-        style={{height:"100%", width:"100%"}}
-      >
-        {listOfData.map((recipe) => (
-          <SwiperSlide
-            key={recipe.id}
-            onClick={() => {
-              handleClick(`/receta/${recipe.id%recetas.length}`);
-            }}
-            className={styles.swiperSlide}
-          >
-            
-            <div className={styles.swiperOverlay} style={{backgroundImage: `linear-gradient(to right bottom, rgba(0,0,0,0.3), rgba(0, 0, 0, 0.3)), url(${recetas.filter(receta => receta.id == (recipe.id%recetas.length)).map(rec => rec.imagen)})`}}></div>
-            <div className={styles.swiperTitle}>{recetas.filter(receta => receta.id == (recipe.id%recetas.length)).map(rec => rec.nombre)}</div>
-            <div className={styles.cookingTime}>
-              <div className={styles.timeContainer}>
-                <AccessTimeIcon fontSize="medium" sx={{ color: "white" }} />
+      <div style={{ height: "15rem" }}>
+        <Swiper
+          grabCursor={true}
+          freeMode={true}
+          modules={[FreeMode]}
+          spaceBetween={10}
+          slidesPerView={cardNum}
+          style={{ height: "100%", width: "100%" }}
+        >
+          {listOfData.map((recipe) => (
+            <SwiperSlide
+              key={recipe.id}
+              onClick={() => {
+                handleClick(`/receta/${recipe.id % recetas.length}`);
+              }}
+              className={styles.swiperSlide}
+            >
+              <div
+                className={styles.swiperOverlay}
+                style={{
+                  backgroundImage: `linear-gradient(to right bottom, rgba(0,0,0,0.3), rgba(0, 0, 0, 0.3)), url(${recetas
+                    .filter((receta) => receta.id == recipe.id % recetas.length)
+                    .map((rec) => rec.imagen)})`,
+                }}
+              ></div>
+              <div className={styles.swiperTitle}>
+                {recetas
+                  .filter((receta) => receta.id == recipe.id % recetas.length)
+                  .map((rec) => rec.nombre)}
               </div>
-              <div style={{ color: "white" }}>
-                <div className={styles.timeNumber}>60</div>
-                <div className={styles.timeTag}>Min</div>
+              <div className={styles.cookingTime}>
+                <div className={styles.timeContainer}>
+                  <AccessTimeIcon fontSize="medium" sx={{ color: "white" }} />
+                </div>
+                <div style={{ color: "white" }}>
+                  <div className={styles.timeNumber}>
+                    {recetas
+                      .filter(
+                        (receta) => receta.id == recipe.id % recetas.length
+                      )
+                      .map((rec) => rec.tiempo)}
+                  </div>
+                  <div className={styles.timeTag}>Min</div>
+                </div>
               </div>
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
     </>
   );
