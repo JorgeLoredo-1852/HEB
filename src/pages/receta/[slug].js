@@ -52,12 +52,14 @@ const Receta = () => {
     setTab(val);
   };
 
+  console.log(docsPasos);
+
   return (
     <div>
       <HeaderImg
-        imagen="/images/burger.jpg"
-        height="240px"
-        texto="Hamburguesa"
+        imagen= {docsPasos.length > 0?docsPasos[0].imagen : "/images/burger.jpg"}
+        height= "240px"
+        texto= {docsPasos.length > 0?docsPasos[0].nombre : "Cargando..."}
       />
       <RecipeDetails foodLists={docsIngredients}/>
       <RecipeTabs handleChange={handleChange} />
