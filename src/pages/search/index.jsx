@@ -5,7 +5,7 @@ import { Grid, Typography, Box } from "@mui/material"
 import { useContext } from "react"
 import { useState } from "react"
 import DownloadIcon from '@mui/icons-material/Download';
-import DownloadButton from "@/atoms/DownloadButton/DownloadButton"
+import DownloadButton from "@/atoms/downloadButton/downloadButton"
 
 
 const Search = () => {
