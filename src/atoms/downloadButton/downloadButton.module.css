@@ -1,0 +1,61 @@
+
+
+
+
+  .btn__secondary, .btn__secondary:link, .btn__secondary:visited {
+    text-decoration: none;
+    display: flex;
+    border-radius: 1.2rem;
+    transition: all 0.2s;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    background-color: white;
+    color: var(--red-main);
+    text-align: center;
+    border: 1.5px solid var(--red-main);
+    position: relative;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+
+
+
+  .btn__main:hover {
+    transform: translateY(-0.3rem);
+    box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.4);
+    /* X-shadow, Y-shadow, blur, color of the shadow */
+  }
+  
+  .btn__secondary:hover {
+    transform: translateY(-0.3rem);
+    box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.4);
+    /* X-shadow, Y-shadow, blur, color of the shadow */
+  }
+
+  .btn__main:active, .btn__main:focus, .btn__secondary:active, .btn__secondary:focus {
+    transform: translateY(0rem);
+    box-shadow: 0 0rem 0.2rem rgba(0, 0, 0, 0.4);
+    /* X-shadow, Y-shadow, blur, color of the shadow */
+  }
+
+
+  .btn__container{
+    position: fixed;
+    bottom: 4.3rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+
+  .btn__relative{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    align-self: stretch;
+  }
