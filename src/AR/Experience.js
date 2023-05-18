@@ -202,6 +202,16 @@ class ARExperience{
             })
             this.end = true
             window.endedARExperience = true
+            let a = localStorage.getItem("token")
+            console.log(a)
+            fetch('https://josecarl0s1.pythonanywhere.com/usa', {
+                                method: 'POST',
+                                headers: {'Content-Type': 'application/json'},
+                                body: JSON.stringify({
+                                    "token":a,
+                                    "fecha" : "2023-05-18"
+                                })
+                            })
         }
     }
 
