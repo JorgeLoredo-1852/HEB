@@ -41,7 +41,7 @@ const MyRecipes = () => {
   return (
     <>
       <div className={styles.container}>
-        <div className={styles.title}>Explora</div>
+        <div className={styles.title}>Prueba algo nuevo </div>
         <Link href={"/receta/1"}>
           <div className={styles.btn}>Ver todo</div>
         </Link>
