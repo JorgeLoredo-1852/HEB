@@ -6,9 +6,12 @@ import { useState, useEffect, useContext } from "react";
 import SignalCellularAltIcon from '@mui/icons-material/SignalCellularAlt';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 
-const RecipeDetails = ({foodLists}) => {
-    const { listInfo, setListInfo } = useContext(ListContext);
+const RecipeDetails = ({foodLists, dif, tiempo}) => {
+  const { listInfo, setListInfo } = useContext(ListContext);
   const [data, setData] = useState({});
+
+  console.log(dif);
+  console.log(tiempo);
 
   useEffect(() => {
     setData({ ...listInfo });
@@ -42,7 +45,7 @@ const RecipeDetails = ({foodLists}) => {
                         </div>
                     </div>
                     <div style={{padding:"0.2rem 0.8rem", backgroundColor:"#C7EFC1", fontSize:"0.8rem", borderRadius:"100px"}}>
-                        FÁCIL
+                        {dif}
                     </div>
                 </div>
 
@@ -55,7 +58,7 @@ const RecipeDetails = ({foodLists}) => {
                         </div>
                     </div>
                     <div style={{padding:"0.2rem 0.8rem", fontSize:"0.8rem", fontWeight:"700", borderRadius:"100px"}}>
-                        60 MIN
+                        {tiempo} Min
                     </div>
                 </div>
             </Grid>

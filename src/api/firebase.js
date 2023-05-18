@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { initializeApp } from 'firebase/app';
-import { getFirestore, collection, getDocs, query, where } from 'firebase/firestore/lite';
+import { getFirestore, collection, getDocs, query, where, orderBy} from 'firebase/firestore/lite';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyCWT4mLjto-JRexnFS99V5BZNGPE0YBOzs",
@@ -22,6 +22,8 @@ export function GetCollection(col){
     const collectionReference = collection(db, col); // Referencia para la coleccion que quieres
 
     const getCollection = async() => {
+        
+        
         const data = await(getDocs(collectionReference)); // Esta funcion hace la call
         setDocs(data.docs.map((doc) => ({...doc.data()}))) // mapea la informacion de los documentos a variable docs
     }
@@ -40,7 +42,7 @@ export function GetItem(col, id){
     const q = query(collectionReference, where("id", "==", parseInt(id)));
 
     const getItem = async() => {
-        const data = await(getDocs(q))
+        const data = await(getDocs (q))
         setDocs(data.docs.map((doc) => ({...doc.data()})))
     } 
 
