@@ -57,7 +57,7 @@ const Receta = () => {
   return (
     <div>
       <HeaderImg
-        imagen= {docsPasos.length > 0?docsPasos[0].imagen : "/images/burger.jpg"}
+        imagen= {docsPasos.length > 0?docsPasos[0].imagen : ""}
         height= "240px"
         texto= {docsPasos.length > 0?docsPasos[0].nombre : "Cargando..."}
       />

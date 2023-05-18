@@ -10,7 +10,7 @@
     align-items: center;
 }
 
-.headerContainer {
+.headerContainer { 
     width: 100vw;
     height: 290px;
     overflow: hidden;
@@ -21,6 +21,7 @@
 
 .headerImg {
     width: inherit;
+
 }
 
 .headerOverlay{
