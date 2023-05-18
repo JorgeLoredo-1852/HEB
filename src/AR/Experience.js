@@ -122,7 +122,7 @@ class ARExperience{
         document.getElementById("ARButton").style.backgroundColor = "red"; 
         document.getElementById("ARButton").style.border = "none"
         document.getElementById("ARButton").innerHTML  = "JUGAR"
-        document.getElementById("ARButton").style.top = "80%";
+        document.getElementById("ARButton").style.top = "78%";
         document.getElementById("ARButton").style.left = "50%"; 
         document.getElementById("ARButton").style.transform = "Translate(-50%, -50% - 50px)"
         document.getElementById("ARButton").style.width = "-webkit-fill-available"
