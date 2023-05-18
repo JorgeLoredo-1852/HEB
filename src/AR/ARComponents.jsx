@@ -3,11 +3,42 @@ import ARExperience from "./Experience"
 import ReactLogo from '../assets/icons/balloon.svg';
 import Image from 'next/image';
 
+const requestOptionsGET = {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json',"Access-Control-Allow-Origin":"*", 
+        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE',
+        'Access-Control-Allow-Headers': 'x-access-token, Origin, X-Requested-With, Content-Type, Accept'
+    },
+  };
 
 function ARComponents(){
     const [ARExp, setARExp] = useState(null) 
     const [ended, setEnded] = useState(false)
+    const [userToken, setUserToken] = useState("")
+
+    useEffect(() => {
+        fetch('https://josecarl0s1.pythonanywhere.com/usuarios', requestOptionsGET)
+        .then((response) => response.json())  
+        .then((dog) => {
+            if(dog){
+            console.log(dog)
+            //setUserToken(dog)
+            } else {
+            let newToken = token()
+            //setUserToken(newToken)
+
+            //CREATE TOKEN USER
+            }
+        });
+    }, [])
+
+    const rand = () => {
+        return Math.random().toString(36).substr(2);
+    };
     
+    const token = () => {
+        return rand() + rand();
+    };
 
     useEffect(() => {
         setARExp(new ARExperience())

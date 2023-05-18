@@ -3,7 +3,7 @@ import ListContext from '@/hooks/ListContext'
 import AppBarHeader from '@/components/navbar/appBarHeader/appBarHeader'
 import '@/styles/globals.css'
 import { Poppins } from '@next/font/google'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import SearchContext from '@/hooks/SearchContext'
 
 const poppins = Poppins({ weight: '400', subsets: ['latin'] })
