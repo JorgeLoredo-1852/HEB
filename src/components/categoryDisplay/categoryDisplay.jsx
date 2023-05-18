@@ -37,7 +37,7 @@ const CategoryDisplay = () => {
         {placeholderRecetas.map((itemData) => (
             <>
              <ListItem>
-              <Box style={{ display: 'flex', alignItems: 'center'}}>
+              <Box style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-evenly'}}>
                  <ListItemDecorator sx={{ alignSelf: "center", marginRight: "0.5rem" }}>
                    <Box  component="img" src={itemData.image} sx={{ width: "90px", maxHeight: "90px", borderRadius: '12px'}} />
                  </ListItemDecorator>
