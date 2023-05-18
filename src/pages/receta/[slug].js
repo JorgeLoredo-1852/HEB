@@ -61,7 +61,7 @@ const Receta = () => {
         height= "240px"
         texto= {docsPasos.length > 0?docsPasos[0].nombre : "Cargando..."}
       />
-      <RecipeDetails foodLists={docsIngredients} dif={docsPasos.length>0?docsPasos[0].dificultad:"Facil"} tiempo = {docsPasos.length>0?docsPasos[0].tiempo:"60 Min"}/>
+      <RecipeDetails foodLists={docsIngredients} dif={docsPasos.length>0?docsPasos[0].dificultad:"Facil"} tiempo = {docsPasos.length>0?docsPasos[0].tiempo:"60"}/>
       <RecipeTabs handleChange={handleChange} />
       {tab == 0 ? (
         <IngredientList foodLists={docsIngredients}/>
