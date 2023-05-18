@@ -20,7 +20,7 @@ const placeholderRecetas = [
         title: 'Ramen',
         time: '120 mins',
         difficulty: 'DIFICÍL',
-        image: 'https://www.foodandwine.com/thmb/0AXGLeY6dYnY8sEXFqxBa8opDrs=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Tonkotsu-Ramen-FT-BLOG1122-8fe6c12d609a4fd4ab246bea3aae140e.jpg', 
+        image: 'https://www.elmundoeats.com/wp-content/uploads/2021/02/FP-Quick-30-minutes-chicken-ramen.jpg', 
     }
 ]
 
@@ -30,30 +30,30 @@ const CategoryDisplay = () => {
       <div style={{ display: 'flex', width: '100%', justifyContent: 'center'}}>
         <Box style={{borderRadius: '12px', marginLeft: '12px', marginRight: '12px',  width: '100%', height: '12rem', overflow: 'hidden', display: 'flex', alignItems: 'center', position: 'relative'}}>
           <Box component='img' src={'images/burger.jpg'} style = {{ width: 'inherit'}}/>
-          <Box style={{ color: '#FFFFFF', position: 'absolute', bottom: '0', left: '0', marginLeft: '20px', marginBottom: '15px', textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)', fontWeight: '900', fontSize: '24px'}}>Desayunos</Box>
+          <Box style={{ color: '#FFFFFF', position: 'absolute', bottom: '0', left: '0', marginLeft: '20px', marginBottom: '15px', textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)',  fontSize: '20px'}}>Desayunos</Box>
         </Box>
       </div>
       <List aria-labelledby="basic-list-demo" sx={{ marginBottom: "7.5rem" }}>
         {placeholderRecetas.map((itemData) => (
             <>
              <ListItem>
-              <Box style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-evenly'}}>
+              <Box style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-evenly', width:"100%", marginBottom:"5px", marginTop:"5px"}}>
                  <ListItemDecorator sx={{ alignSelf: "center", marginRight: "0.5rem" }}>
-                   <Box  component="img" src={itemData.image} sx={{ width: "90px", maxHeight: "90px", borderRadius: '12px'}} />
+                   <Box  component="img" sx={{ width: "70px", height: "70px",maxHeight: "70px", borderRadius: '12px', backgroundImage: `url(${itemData.image})`, backgroundSize: "cover"}} />
                  </ListItemDecorator>
                  <Box>
                     <Stack spacing={0.6}>
                         <Box style={{ fontWeight: '900' }}>
                             {itemData.title}
                         </Box>
-                        <Box style = {{display: 'flex', justifyContent: 'center'}}>
-                            <AccessTimeIcon/>
+                        <Box style = {{display: 'flex', justifyContent: 'left'}}>
+                            <AccessTimeIcon sx={{mr:"5px"}} />
                             {itemData.time}
                         </Box>
                     </Stack>
                  </Box>
                  <Box sx={{ marginLeft: 'auto'}}>
-                    <div style={{padding:"0.2rem 0.8rem", backgroundColor: itemData.difficulty === 'FÁCIL' ? '#C7EFC1' : itemData.difficulty === 'MEDIO' ? '#F2B46B' : itemData.difficulty === 'DIFICÍL' ? '#F1B2B2' : '#C7EFC1', fontSize:"0.8rem", borderRadius:"100px"}}>
+                    <div style={{padding:"0.2rem 0.8rem", backgroundColor: itemData.difficulty === 'FÁCIL' ? '#C7EFC1' : itemData.difficulty === 'MEDIO' ? '#F8D5AC' : itemData.difficulty === 'DIFICÍL' ? '#F1B2B2' : '#C7EFC1', fontSize:"0.8rem", borderRadius:"100px"}}>
                         {itemData.difficulty}
                     </div>
                  </Box>
