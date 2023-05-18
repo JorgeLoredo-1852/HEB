@@ -6,6 +6,7 @@ import { useContext } from "react"
 import { useState } from "react"
 import DownloadIcon from '@mui/icons-material/Download';
 import DownloadButton from "@/atoms/downloadButton/downloadButton"
+import CategoryDisplay from "@/components/categoryDisplay/categoryDisplay"
 
 
 const Search = () => {
@@ -14,18 +15,16 @@ const Search = () => {
     return (
     <div style={{padding:"1.5rem", marginTop:"3rem"}}>
         <SearchBox/>
-        {searchInfo ? 
-            <div>
-                {searchInfo}
-            </div> : 
-            <div>
+        {searchInfo && searchInfo == "Desayunos" && (<CategoryDisplay/>)}
+        {searchInfo && searchInfo != "Desayunos" && (<>{searchInfo}</>)}
+        {!searchInfo && (<div>
                 <Grid container>
                     <Grid xs = {12} sx= {{marginBottom: "15px", marginTop: "5px"}}>
                         <Typography variant="h6" fontWeight="bolder" >Categorias principales</Typography>
                     </Grid>
                 </Grid>
                 <SearchCategories/>
-            </div>}
+            </div>)}
     </div>)
 }
 
