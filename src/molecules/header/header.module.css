@@ -17,6 +17,7 @@
     align-items: center;
     display: flex;
     position: relative;
+    overflow-x: hidden;
 }
 
 .headerImg {
