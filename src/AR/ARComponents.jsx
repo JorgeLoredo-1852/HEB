@@ -4,8 +4,10 @@ import ReactLogo from '../assets/icons/balloon.svg';
 import Image from 'next/image';
 
 
-const ARComponents = () => {
+function ARComponents(){
     const [ARExp, setARExp] = useState(null) 
+    const [ended, setEnded] = useState(false)
+    
 
     useEffect(() => {
         setARExp(new ARExperience())
@@ -18,6 +20,13 @@ const ARComponents = () => {
         }
     }, [ARExp])
 
+    if (typeof window !== 'undefined') {
+        let value = window.endedARExperience
+        console.log(value)
+      }
+      
+    
+
     return (
             <div
                 className="container3D"
@@ -29,43 +38,27 @@ const ARComponents = () => {
                     backgroundColor: "black"
                 }}
             >
-                <div style={{width:"100vw", height:"100vh", backgroundColor:"#DD2B22", display:"flex", justifyContent:"center", alignItems:"center", padding:"5rem 2rem"}}>
+                <div style={{width:"100vw", height:"100vh", backgroundColor:"white", display:"flex", justifyContent:"center", alignItems:"center", padding:"5rem 2rem"}}>
                     <div style={{height:"50%", marginTop:"-14rem"}}>
-                        <div style={{color:"white", fontSize:"2rem", fontWeight:"800", textAlign:"center", marginBottom:"1.5rem"}}>¡GANA DESCUENTOS EN TUS COMPRAS!</div>
-                        <div style={{backgroundColor:"white", padding:"1.5rem 1.5rem", height:"100%", borderRadius:"0.6rem"}}>
-                            <div style={{width:"100%", height:"50%", position:"relative"}}>
+                        {ended ? <>
+                        
+                        
+                        </> : 
+                            <>
+                            
+                            
+                            <div style={{fontSize:"2rem", textAlign:"center", fontWeight:"900"}}>¡Gana descuentos en tus compras!</div>
+                            <div style={{display:"flex", justifyContent:"center", margin: "1.5rem 0"}}>
                                 <Image
-                                    priority
-                                    src={'/icons/balloon.svg'}
-                                    alt="Balloon"
-                                    width={100}
-                                    height={100}
-                                    style={{position:"absolute", left:0, bottom:0}}
-                                /> 
-                                <Image
-                                    priority
-                                    src={'/icons/balloon.svg'}
-                                    alt="Balloon"
-                                    width={150}
-                                    height={150}
-                                    style={{position:"absolute", left:"50%", transform:"TranslateX(-50%)"}}
-                                />
-                                <Image
-                                    priority
-                                    src={'/icons/balloon.svg'}
-                                    alt="Balloon"
-                                    width={100}
-                                    height={100}
-                                    style={{position:"absolute", right:0, bottom:0}}
+                                    width={350}
+                                    height={270}
+                                    src = "/images/balloons.png"
                                 />
                             </div>
-                            <div style={{marginTop:"1rem", width:"100%", textAlign:"center"}}>
-                                Rompe 10 globos y gánate hasta 10 de descuento en tu carrito
-                            </div>
-                            <div style={{marginTop:"4rem", width:"100%", textAlign:"center", fontSize:"0.8rem", color:"grey"}}>
-                                Aún no juegas tu partida de la semana
-                            </div>
-                        </div>
+                            <div style={{textAlign:"center", padding:"1rem"}}>Rompe 15 Globos y gánate hasta 15% de descuento en tu proximo super</div>
+                            <div style={{marginTop:"3rem", textAlign:"center", color:"grey"}}>Aún no juegas tu partida del dia</div>
+
+                        </>}
                     </div>
                 </div>
             </div>
