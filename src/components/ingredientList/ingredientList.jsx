@@ -116,7 +116,7 @@ function IngredientList(props) {
                 ></Box>
               </ListItemDecorator>
               <Stack spacing={0.6}>
-                <Box style={{ fontWeight: "500" }}>{itemData.nombre}</Box>
+                <Box style={{ fontWeight: "500", width: "150px"}}>{itemData.nombre}</Box>
                 <Box style={{ fontSize: "13px" }}>{itemData.cantidad}</Box>
                 <Box style={{ fontWeight: "700", fontSize: "15px" }}>
                   ${itemData.precio}

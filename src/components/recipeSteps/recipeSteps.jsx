@@ -21,9 +21,9 @@ function RecipeSteps(props) {
 
                         return <Box sx={{ marginBottom: "10px" }} key={`pasosData${nPaso}`}>
                             <ListItem
-                                endAction={<ListItemDecorator sx={{paddingBottom: "90%", paddingLeft: "40%"}} style={{color: "red"}}>
-                                    <Box component="img" src="https://cdn-icons-png.flaticon.com/512/6626/6626964.png" sx={{ width: "20px", height: "20px"}}></Box>
-                                </ListItemDecorator>}
+                                //endAction={<ListItemDecorator sx={{paddingBottom: "90%", paddingLeft: "40%"}} style={{color: "red"}}>
+                                    //<Box component="img" src="https://cdn-icons-png.flaticon.com/512/6626/6626964.png" sx={{ width: "20px", height: "20px"}}></Box>
+                                //</ListItemDecorator>}
                                 sx={{ display: "flex", alignItems: "center", borderRadius: "15px", border: "1px solid #80808067", py: "5%" }}>
                                 <ListItemDecorator>
                                     <div className={Math.floor(nPaso / 10) > 0 ? styles.bigNumber : styles.number}>{nPaso}</div>

@@ -43,6 +43,9 @@ function ShoppingList() {
 
   return (
     <div>
+      <div style={{fontWeight: "2000", fontSize: "22px", paddingLeft: "5%", paddingBottom: "0px"}}>
+        Mi Lista
+      </div>
       <List aria-labelledby="basic-list-demo">
         {Object.values(listInfo).map((itemData) => (
           ( itemData.quantity > 0 && (<Box key={itemData.nombre}>
@@ -74,9 +77,13 @@ function ShoppingList() {
             {itemData.nombre ==
             Object.values(listInfo)[Object.values(listInfo).length - 1]
               .nombre ? (
-              <></>
+              <>
+              </>
             ) : (
-              <ListDivider inset="gutter" />
+              <List>
+                <ListDivider inset="gutter" />
+              </List>
+              
             )}
           </Box>))
         ))}
