@@ -17,7 +17,7 @@ const List = () => {
   
   if (Object.values(listInfo).length == 0){
     return <div style ={{ marginTop: "5rem", marginBottom :"5rem"}}>
-      {console.log(Object.values(listInfo)[i].quantity)}
+      {/*console.log(Object.values(listInfo)[i].quantity)*/}
         <EmptyList />
         </div>
   }
