@@ -15,7 +15,9 @@ const Search = () => {
     return (
     <div style={{padding:"1.5rem", marginTop:"3rem"}}>
         <SearchBox/>
-        {searchInfo && searchInfo == "Desayunos" && (<CategoryDisplay/>)}
+        {searchInfo && searchInfo == "Desayunos" && (<CategoryDisplay cat="desayuno"/>)}
+        {searchInfo && searchInfo == "Comida" && (<CategoryDisplay cat="comida"/>)}
+        {searchInfo && searchInfo == "Cenas" && (<CategoryDisplay cat="cena"/>)}
         {searchInfo && searchInfo != "Desayunos" && (<>{searchInfo}</>)}
         {!searchInfo && (<div>
                 <Grid container>
