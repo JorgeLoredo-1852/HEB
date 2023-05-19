@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, getDocs, query, where, orderBy} from 'firebase/firestore/lite';
+import { HolidayVillage } from '@mui/icons-material';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyCWT4mLjto-JRexnFS99V5BZNGPE0YBOzs",
@@ -75,7 +76,8 @@ export function GetFilter(col, tag){
     const [docs, setDocs] = useState([]);
     const collectionReference = collection(db, col);
 
-    const q = query(collectionReference, where("tags", "array-contains", tag));
+    const q = query(collectionReference, where("categorias", "array-contains", tag));
+    //console.log(q);
 
     const getItemArray = async() => {
         const data = await(getDocs(q))

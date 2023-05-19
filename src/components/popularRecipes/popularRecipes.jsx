@@ -24,8 +24,6 @@ const PopularRecipes = () => {
   const [cardNum, setCardNum] = useState(10);
   const recetas = GetCollection("Recetas");
 
-  console.log(recetas);
-
   useEffect(() => {
     if (downLg && downMd && downSm) {
       setCardNum(2.5);

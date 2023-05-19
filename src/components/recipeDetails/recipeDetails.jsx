@@ -10,8 +10,8 @@ const RecipeDetails = ({ foodLists, dif, tiempo }) => {
   const { listInfo, setListInfo } = useContext(ListContext);
   const [data, setData] = useState({});
 
-  console.log(dif);
-  console.log(tiempo);
+  //console.log(dif);
+  //console.log(tiempo);
 
   useEffect(() => {
     setData({ ...listInfo });
@@ -31,7 +31,7 @@ const RecipeDetails = ({ foodLists, dif, tiempo }) => {
     setListInfo({ ...listInfo, ...data });
   };
 
-  console.log(data);
+  //console.log(data);
   return (
     <div style={{ margin: "0.8rem 1rem" }}>
       <Grid
