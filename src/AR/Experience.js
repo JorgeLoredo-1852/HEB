@@ -34,6 +34,7 @@ class ARExperience{
             this.controls.target.set(0, 3.5, 0);
             this.controls.update();
             
+
             this.meshes = [];
 
 			this.clock = new THREE.Clock();
@@ -110,7 +111,10 @@ class ARExperience{
         this.createText()
 
         this.controller = this.renderer.xr.getController(0);
-        this.controller.addEventListener('select', onSelect);
+        //this.controller.addEventListener('select', onSelect);
+        this.controller.addEventListener('click', onSelect);
+        
+        
         this.scene.add(this.controller);
         this.container.appendChild(
             ARButton.createButton(this.renderer)
