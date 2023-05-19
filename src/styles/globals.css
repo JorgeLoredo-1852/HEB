@@ -1,7 +1,7 @@
 :root{
   --red-main: #DD2B22;
   --red-bg: #FFF2F2;
-  --red-light: rgba(#DD2B22, 0.65);
+  --red-secondary: rgba(221, 43, 34, 0.65);
   --grey-light: rgba(0,0,0,0.33);
   --black: #000;
   --white: #fff;
@@ -36,8 +36,31 @@ a {
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+
+
+
+
+.myRecipes_swiperSlideMy__u2eW_.swiper-slide-active{
+  height: 250px !important;
+  transition: all 0.3s;
+  margin-top: 0;
 }
+
+.slick-slide > div {
+  margin-bottom: 0px;
+  width: 100px;
+}
+.myRecipes_swiperSlideMy__u2eW_{
+  margin-top: 2rem; 
+}
+
+.MuiCardContent-root div {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.MuiCardContent-root {
+ 
+  padding-bottom: 12px !important;
+}
+

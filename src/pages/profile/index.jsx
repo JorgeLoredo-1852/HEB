@@ -1,7 +1,3 @@
-import UserContext from "@/hooks/UserContext"
-import { useContext } from "react"
-
-
 const Profile = () => {
 
     // LOGIN
@@ -15,7 +11,12 @@ const Profile = () => {
     */
    
 
-    return (<div>Profile</div>)
+    return (
+        <>
+            <div style={{ marginTop: "5rem", marginBottom: "5rem" }}>
+            </div>
+        </>
+    )
 }
 
 export default Profile

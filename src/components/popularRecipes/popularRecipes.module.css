@@ -1,0 +1,79 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.8rem;
+  margin-top: 1.5rem;
+}
+
+.title {
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.btn {
+  font-size: 0.8rem;
+  color: var(--red-main);
+}
+
+.swiperSlide {
+  display: flex !important;
+  justify-content: center;
+  overflow: hidden;
+  height: 230px;
+  border-radius: 10px;
+  position: relative;
+}
+
+.swiperOverlay{
+  height: 100px;
+  position: absolute;
+  /*opacity: 0.45;*/
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  /*background-color: black;*/
+}   
+
+
+
+.swiperTitle {
+  position: absolute;
+  color: var(--white);
+  max-width: 80%;
+  left: 1rem;
+  top: 0.6rem;
+  font-weight: 800;
+}
+
+.cookingTime {
+  position: absolute;
+  right: 1rem;
+  bottom: 0.3rem;
+  display: flex;
+}
+
+.timeContainer {
+  margin-top: 0.2rem;
+  margin-right: 0.5rem;
+}
+
+.timeNumber {
+  font-weight: 800;
+  font-size: 1rem;
+  line-height: 1;
+  color: white;
+}
+
+.timeTag {
+  color: white;
+  font-size: 0.8rem;
+}
+
+@media (max-width: 440px) {
+  .swiperTitle {
+    font-size: 0.8rem;
+  }
+}

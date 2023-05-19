@@ -1,0 +1,13 @@
+.number {
+    padding: 4px 12px; 
+    font-size: 1.3rem;
+    font-weight: 650;
+    color: red;
+  }
+
+.bigNumber {
+    padding: 4px 8px; 
+    font-size: 1.3rem;
+    font-weight: 650;
+    color: red;
+}

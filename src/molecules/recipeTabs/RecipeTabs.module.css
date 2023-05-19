@@ -1,0 +1,51 @@
+.report__tabs {
+  display: flex;
+  justify-content: space-around;
+}
+
+.report__tabs__tab {
+  text-decoration: none;
+  cursor: pointer;
+  position: relative;
+  z-index: 5;
+}
+
+@media (min-width: 640px) {
+  .report__tabs__tab {
+    width: 50%;
+  }
+  .report__tabs__bg {
+    width: 100%;
+    padding: 0.6rem 0;
+  }
+  .report__tabs__text {
+    text-align: center;
+  }
+}
+
+.report__tabs__bg {
+  transition: all 0.3s;
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+}
+
+.report__tabs__text {
+  z-index: 10;
+  font-size: 1.1rem;
+  color: black;
+  display: block;
+  text-align: center;
+  font-weight: 800;
+  padding-bottom: 0.5rem;
+}
+
+.tab__active {
+  border-bottom: none;
+  background-image: none;
+  font-weight: 800;
+  background-position: 100%;}
+
+.tab__active > p {
+  color: var(--red-main);
+  border-bottom: 2px solid var(--red-main);
+}
