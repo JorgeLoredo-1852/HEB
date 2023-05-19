@@ -99,7 +99,7 @@ class ARExperience{
                 mesh.userData.velocity.z = -0.07;
                 mesh.userData.velocity.applyQuaternion( self.controller.quaternion );
 
-                mesh.scale.z = mesh.scale.z / 50;
+                mesh.scale.z = mesh.scale.z / 50 ;
                 mesh.scale.x = mesh.scale.x / 50;
                 mesh.scale.y = mesh.scale.y / 50;
 
@@ -111,8 +111,7 @@ class ARExperience{
         this.createText()
 
         this.controller = this.renderer.xr.getController(0);
-        //this.controller.addEventListener('select', onSelect);
-        this.controller.addEventListener('click', onSelect);
+        this.controller.addEventListener('select', onSelect);
         
         
         this.scene.add(this.controller);
@@ -268,17 +267,16 @@ class ARExperience{
 
     move() {
 
-        if(this.frame % 100 == 0){
+        if(this.frame % 70 == 0){
             const gltfLoader = new GLTFLoader();
             
             gltfLoader.load("/balloon.glb", (gltf) => {
                 var balloon = gltf.scene
                 this.spheres.push(balloon);
                 this.scene.add( this.spheres[this.spheres.length - 1] );
-                //this.spheres[this.spheres.length - 1].position.x = Math.random() * (2 + 2) - 2;
+                this.spheres[this.spheres.length - 1].position.x = Math.random() * (2 + 2) - 2;
                 this.spheres[this.spheres.length - 1].position.y = -0.5;
-                //this.spheres[this.spheres.length - 1].position.z = Math.random() * (0 + 2) - 2;
-                this.spheres[this.spheres.length - 1].position.z = -1;
+                this.spheres[this.spheres.length - 1].position.z = Math.random() * (0 + 2) - 2;
                 this.spheres[this.spheres.length - 1].newValueCollision = false
             })
         }
