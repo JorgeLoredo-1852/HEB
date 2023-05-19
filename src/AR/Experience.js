@@ -264,19 +264,18 @@ class ARExperience{
 
     move() {
 
-        if(this.frame % 70 == 0){
+        if(this.frame % 100 == 0){
             const gltfLoader = new GLTFLoader();
             
             gltfLoader.load("/balloon.glb", (gltf) => {
                 var balloon = gltf.scene
                 this.spheres.push(balloon);
                 this.scene.add( this.spheres[this.spheres.length - 1] );
-                this.spheres[this.spheres.length - 1].position.x = Math.random() * (2 + 2) - 2;
-                this.spheres[this.spheres.length - 1].position.y = 0;
-                this.spheres[this.spheres.length - 1].position.z = Math.random() * (0 + 2) - 2;
+                //this.spheres[this.spheres.length - 1].position.x = Math.random() * (2 + 2) - 2;
+                this.spheres[this.spheres.length - 1].position.y = -0.5;
+                //this.spheres[this.spheres.length - 1].position.z = Math.random() * (0 + 2) - 2;
+                this.spheres[this.spheres.length - 1].position.z = -1;
                 this.spheres[this.spheres.length - 1].newValueCollision = false
-                
-
             })
         }
 
