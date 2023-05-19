@@ -13,22 +13,28 @@ const List = () => {
   useEffect(() => {
     setData({ ...listInfo });
   }, []);
+  
+  
   if (Object.values(listInfo).length == 0){
     return <div style ={{ marginTop: "5rem", marginBottom :"5rem"}}>
+      {console.log(Object.values(listInfo)[i].quantity)}
         <EmptyList />
         </div>
   }
-  for (let i = 0; Object.values(listInfo).length; i++){
+  for (let i = 0; i < Object.values(listInfo).length; i++){
     if (Object.values(listInfo)[i].quantity > 0){
       return <div style ={{ marginTop: "5rem", marginBottom :"5rem"}}>
+          {console.log(Object.values(listInfo)[i].quantity)}
           <ShoppingList />
         </div>
     }
-    else {
+  }
+  for (let i = 0; i < Object.values(listInfo).length; i++){
+    console.log(Object.values(listInfo)[i].quantity)
+    if (Object.values(listInfo)[i].quantity == 0){
       return <div style ={{ marginTop: "5rem", marginBottom :"5rem"}}>
-        <EmptyList />
+          <EmptyList />
         </div>
-      
     }
   }
 };

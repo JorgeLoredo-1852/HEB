@@ -92,7 +92,7 @@ function IngredientList(props) {
                       ? listInfo[`${itemData.nombre}`].quantity
                       : 0}
                   </div>
-                  {console.log()}
+                  {/*console.log()*/}
                   <IconButton
                     onClick={() => onClickUnit(itemData)}
                     sx={{ color: "#DD2B22" }}

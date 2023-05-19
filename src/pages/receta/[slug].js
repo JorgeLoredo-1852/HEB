@@ -52,7 +52,7 @@ const Receta = () => {
     setTab(val);
   };
 
-  console.log(docsPasos);
+  //console.log(docsPasos);
 
   return (
     <div>
