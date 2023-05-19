@@ -77,7 +77,7 @@ export function GetFilter(col, tag){
     const collectionReference = collection(db, col);
 
     const q = query(collectionReference, where("categorias", "array-contains", tag));
-    console.log(q);
+    //console.log(q);
 
     const getItemArray = async() => {
         const data = await(getDocs(q))

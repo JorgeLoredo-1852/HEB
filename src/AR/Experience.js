@@ -178,7 +178,7 @@ class ARExperience{
     initScene(){
         document.querySelector(".container3D").appendChild(this.container)
         this.renderer.setAnimationLoop(this.render.bind(this))
-        console.log("Scene initialized")
+        //console.log("Scene initialized")
     }
     
 	render( ) {   
@@ -203,7 +203,7 @@ class ARExperience{
             this.end = true
             window.endedARExperience = true
             let a = localStorage.getItem("token")
-            console.log(a)
+            //console.log(a)
             fetch('https://josecarl0s1.pythonanywhere.com/usa', {
                                 method: 'POST',
                                 headers: {'Content-Type': 'application/json'},

@@ -78,7 +78,7 @@ function ARComponents(){
                                     if(document.getElementById("ARButton")){
                                         document.getElementById("ARButton").remove();
                                     }
-                                    console.log("asdas")
+                                    //console.log("asdas")
                                 }
                             }
                         }

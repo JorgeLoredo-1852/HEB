@@ -64,7 +64,7 @@ const SearchBox = () => {
       router.push("/search");
     }
     setSearchInfo(searchWord);
-    console.log(searchWord);
+    //console.log(searchWord);
   };
 
   return (

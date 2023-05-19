@@ -6,29 +6,12 @@ import { useState } from 'react';
 import { db } from '@/api/firebase';
 import { collection, query, getDocs, where } from 'firebase/firestore/lite';
 import { useEffect } from 'react';
+import { useRouter } from "next/router";
 
-const placeholderRecetas = [
-    {
-        title: 'French Toast',
-        time: '60 mins',
-        difficulty: 'FÁCIL',
-        image: 'https://www.mccormick.com/-/media/project/oneweb/mccormick-us/mccormick/recipe-images/quick_and_easy_french_toast_new_800x800.webp?rev=472bd38acf3f4e80b329915ba486cae1&vd=20220809T202043Z&hash=34381AE86E477B12B64277F710290F21',
-    },
-    {
-        title: 'Huevo Revuelto',
-        time: '45 mins',
-        difficulty: 'MEDIO',
-        image: 'https://cdn.loveandlemons.com/wp-content/uploads/2021/05/scrambled-eggs-500x375.jpg',
-    },
-    {
-        title: 'Ramen',
-        time: '120 mins',
-        difficulty: 'DIFICÍL',
-        image: 'https://www.elmundoeats.com/wp-content/uploads/2021/02/FP-Quick-30-minutes-chicken-ramen.jpg', 
-    }
-]
 
 const CategoryDisplay = ({cat}) => {
+
+  const router = useRouter();
 
   const [recetas, setRecetas] = useState([]);
   const collectionReference = collection(db, "Recetas");
@@ -42,6 +25,11 @@ const CategoryDisplay = ({cat}) => {
   useEffect(() => {
     if(recetas.length == 0) GetFilter();
   }, [recetas])
+
+  const handleClick = (link) => {
+    console.log(link)
+    router.push(link);
+  };
   
   return (
     <>
@@ -53,9 +41,10 @@ const CategoryDisplay = ({cat}) => {
       </div>
       <List aria-labelledby="basic-list-demo" sx={{ marginBottom: "7.5rem" }}>
         {recetas.map((itemData) => (
-            <>
+            <div key={`recetacategoria${itemData.id}`}>
              <ListItem>
-              <Box style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-evenly', width:"100%", marginBottom:"5px", marginTop:"5px"}}>
+              {console.log(itemData.id)}
+              <Box style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-evenly', width:"100%", marginBottom:"5px", marginTop:"5px"}} onClick={() => handleClick(`/receta/${itemData.id}`)}>
                  <ListItemDecorator sx={{ alignSelf: "center", marginRight: "0.5rem" }}>
                    <Box  component="img" sx={{ width: "70px", height: "70px",maxHeight: "70px", borderRadius: '12px', backgroundImage: `url(${itemData.imagen})`, backgroundSize: "cover"}} />
                  </ListItemDecorator>
@@ -78,7 +67,7 @@ const CategoryDisplay = ({cat}) => {
                </Box>  
              </ListItem>
              <ListDivider inset="gutter" />
-            </>
+            </div>
             
           )
         )}
