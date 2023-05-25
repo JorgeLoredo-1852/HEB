@@ -11,31 +11,32 @@ import { useRouter } from "next/router";
 
 
 const IngredientSearch = ({cat}) => {
-    const router = useRouter();
-    const [recetas, setRecetas] = useState([]);
-    const collectionReference = collection(db, "Recetas");
-    
-    console.log(cat);
-    
-    const GetFilter = async() => {
-        const q = query(collectionReference, where("categorias", "array-contains", cat));
-        const data = await(getDocs(q))
-        setRecetas(data.docs.map((doc) => ({...doc.data()})));
-    }
+  const router = useRouter();
+  const [recetas, setRecetas] = useState([]);
+  const collectionReference = collection(db, "Recetas");
+  
+  console.log(cat);
+  
+  const GetCollection = async() => {
+      const data = await(getDocs(collectionReference))
+      setRecetas(data.docs.map((doc) => ({...doc.data()})));
+  }
 
-    useEffect(() => {
-        if(recetas.length == 0) GetFilter();
-    }, [recetas])
+  useEffect(() => {
+      if(recetas.length == 0) GetCollection();
+  }, [recetas])
     
-    const handleClick = (link) => {
-        console.log(link)
-        router.push(link);
-    };
+  const handleClick = (link) => {
+      console.log(link)
+      router.push(link);
+  };
+
+  console.log(cat);
     
   return (
     <div>
         <List aria-labelledby="basic-list-demo" sx={{ marginBottom: "7.5rem" }}>
-        {recetas.map((itemData) => (
+        {recetas.filter(dato => dato.nombre.toLowerCase().includes(cat)).map((itemData) => (
             <div key={`recetacategoria${itemData.id}`}>
              <ListItem>
               {console.log(itemData.id)}
