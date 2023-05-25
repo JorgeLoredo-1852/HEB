@@ -7,18 +7,26 @@ import { useState } from "react"
 import DownloadIcon from '@mui/icons-material/Download';
 import DownloadButton from "@/atoms/downloadButton/downloadButton"
 import CategoryDisplay from "@/components/categoryDisplay/categoryDisplay"
-
+import { collection } from "firebase/firestore/lite"
+import { db } from "@/api/firebase"
 
 const Search = () => {
-    const { searchInfo } = useContext(SearchContext)
+    const { searchInfo } = useContext(SearchContext);
+    const categories = [
+        "bebidas", 
+        "postres",
+        "desayunos",
+        "comida",
+        "italiana",
+        "cenas",
+        "japonesa"
+    ];
+    console.log(searchInfo.toLowerCase());
 
     return (
     <div style={{padding:"1.5rem", marginTop:"3rem"}}>
         <SearchBox/>
-        {searchInfo && searchInfo == "Desayunos" && (<CategoryDisplay cat="desayuno"/>)}
-        {searchInfo && searchInfo == "Comida" && (<CategoryDisplay cat="comida"/>)}
-        {searchInfo && searchInfo == "Cenas" && (<CategoryDisplay cat="cena"/>)}
-        {searchInfo && searchInfo != "Desayunos" && (<>{searchInfo}</>)}
+        {searchInfo && categories.indexOf(searchInfo.toLowerCase()) >= 0 && (<CategoryDisplay cat={searchInfo.toLowerCase()}/>)} 
         {!searchInfo && (<div>
                 <Grid container>
                     <Grid xs = {12} sx= {{marginBottom: "15px", marginTop: "5px"}}>

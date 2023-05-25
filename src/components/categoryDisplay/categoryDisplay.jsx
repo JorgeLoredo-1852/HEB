@@ -16,6 +16,8 @@ const CategoryDisplay = ({cat}) => {
   const [recetas, setRecetas] = useState([]);
   const collectionReference = collection(db, "Recetas");
 
+  console.log(cat);
+
   const GetFilter = async() => {
     const q = query(collectionReference, where("categorias", "array-contains", cat));
     const data = await(getDocs(q))
