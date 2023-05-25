@@ -11,6 +11,27 @@ import { useRouter } from "next/router";
 
 
 const IngredientSearch = ({cat}) => {
+    const router = useRouter();
+    const [recetas, setRecetas] = useState([]);
+    const collectionReference = collection(db, "Recetas");
+    
+    console.log(cat);
+    
+    const GetFilter = async() => {
+        const q = query(collectionReference, where("categorias", "array-contains", cat));
+        const data = await(getDocs(q))
+        setRecetas(data.docs.map((doc) => ({...doc.data()})));
+    }
+
+    useEffect(() => {
+        if(recetas.length == 0) GetFilter();
+    }, [recetas])
+    
+    const handleClick = (link) => {
+        console.log(link)
+        router.push(link);
+    };
+    
   return (
     <div>
         <List aria-labelledby="basic-list-demo" sx={{ marginBottom: "7.5rem" }}>
