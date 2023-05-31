@@ -12,17 +12,17 @@ export const arr = [
   },
   {
     id: 3,
-    name: "Antojitos",
-    img: "/images/pozole.jpg"
+    name: "Bebidas",
+    img: "/images/pozole.jpg" 
   },
   {
     id: 4,
-    name: "Comida",
+    name: "Postres",
     img: "/images/cochinita.jpeg"
   },
   {
     id: 5,
-    name: "Mexicana",
+    name: "Japonesa",
     img: "/images/pescado.jpg"
   },
   {
@@ -31,23 +31,8 @@ export const arr = [
     img: "/images/tlayuda.jpg"
   },
   {
-    id: 7,
-    name: "Americana",
-    img: "/images/burger.jpg"
-  },
-  {
-    id: 8,
-    name: "Vegano",
-    img: "/images/enchiladas.jpg"
-  },
-  {
-    id: 9,
-    name: "Aperitivos",
-    img: "/images/pozole.jpg"
-  },
-  {
-    id: 10,
-    name: "Bebidas",
-    img: "/images/enchiladas.jpg"
+    id:7,
+    name: "Comida",
+    img: "images/burger.jpg"
   }
 ]

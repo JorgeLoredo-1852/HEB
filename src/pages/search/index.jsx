@@ -22,7 +22,6 @@ const Search = () => {
         "cenas",
         "japonesa"
     ];
-    console.log(searchInfo.toLowerCase());
 
     return (
     <div style={{padding:"1.5rem", marginTop:"3rem"}}>

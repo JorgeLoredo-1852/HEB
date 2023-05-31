@@ -30,8 +30,6 @@ const IngredientSearch = ({cat}) => {
       console.log(link)
       router.push(link);
   };
-
-  console.log(cat);
     
   return (
     <div>

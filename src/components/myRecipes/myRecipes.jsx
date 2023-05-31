@@ -12,8 +12,20 @@ import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import { useRouter } from "next/router";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import { GetCollection } from "@/api/firebase";
 
 const MyRecipes = () => {
+
+  function shuffle(arr) {
+    let cur = arr.length;
+    while(cur != 0){
+      let rand = Math.floor(Math.random() * cur);
+      cur--;
+      [arr[cur], arr[rand]] = [arr[rand], arr[cur]];
+    }
+    return arr;
+  }
+  
   const router = useRouter();
 
   const themeM = useTheme();
@@ -21,6 +33,10 @@ const MyRecipes = () => {
   const downMd = useMediaQuery(themeM.breakpoints.down("md"));
   const downSm = useMediaQuery(themeM.breakpoints.down("sm"));
   const [cardNum, setCardNum] = useState(1.2);
+  const recetas = shuffle(GetCollection("Recetas"));
+
+
+  
 
   useEffect(() => {
     if (downLg && downMd && downSm) {
@@ -54,7 +70,7 @@ const MyRecipes = () => {
           slidesPerView={cardNum}
           centeredSlides={true}
         >
-          {listOfData.map((recipe) => (
+          {recetas.map((recipe) => (
             <SwiperSlide
               key={recipe.id}
               onClick={() => {
@@ -65,16 +81,16 @@ const MyRecipes = () => {
               <div
                 className={styles.swiperOverlay}
                 style={{
-                  backgroundImage: `linear-gradient(to right bottom, rgba(0,0,0,0.3), rgba(0, 0, 0, 0.3)), url(${recipe.img})`,
+                  backgroundImage: `linear-gradient(to right bottom, rgba(0,0,0,0.3), rgba(0, 0, 0, 0.3)), url(${recipe.imagen})`,
                 }}
               ></div>
-              <div className={styles.swiperTitle}>{recipe.name}</div>
+              <div className={styles.swiperTitle}>{recipe.nombre}</div>
               <div className={styles.cookingTime}>
                 <div className={styles.timeContainer}>
                   <AccessTimeIcon fontSize="large" sx={{ color: "white" }} />
                 </div>
                 <div style={{ color: "white" }}>
-                  <div className={styles.timeNumber}>{recipe.time}</div>
+                  <div className={styles.timeNumber}>{recipe.tiempo}</div>
                   <div className={styles.timeTag}>Min</div>
                 </div>
               </div>
