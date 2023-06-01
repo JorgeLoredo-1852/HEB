@@ -32,7 +32,7 @@ const PopularRecipes = () => {
     } else if (downLg) {
       setCardNum(5);
     } else {
-      setCardNum(8);
+      setCardNum(recetas.length);
     }
   }, [downLg, downMd, downSm]);
 
@@ -59,26 +59,22 @@ const PopularRecipes = () => {
           slidesPerView={cardNum}
           style={{ height: "100%", width: "100%" }}
         >
-          {listOfData.map((recipe) => (
+          {recetas.map((recipe) => (
             <SwiperSlide
               key={recipe.id}
               onClick={() => {
-                handleClick(`/receta/${recipe.id % recetas.length}`);
+                handleClick(`/receta/${recipe.id}`);
               }}
               className={styles.swiperSlide}
             >
               <div
                 className={styles.swiperOverlay}
                 style={{
-                  backgroundImage: `linear-gradient(to right bottom, rgba(0,0,0,0.3), rgba(0, 0, 0, 0.3)), url(${recetas
-                    .filter((receta) => receta.id == recipe.id % recetas.length)
-                    .map((rec) => rec.imagen)})`,
+                  backgroundImage: `linear-gradient(to right bottom, rgba(0,0,0,0.3), rgba(0, 0, 0, 0.3)), url(${recipe.imagen})`,
                 }}
               ></div>
               <div className={styles.swiperTitle}>
-                {recetas
-                  .filter((receta) => receta.id == recipe.id % recetas.length)
-                  .map((rec) => rec.nombre)}
+                {recipe.nombre}
               </div>
               <div className={styles.cookingTime}>
                 <div className={styles.timeContainer}>
@@ -86,11 +82,7 @@ const PopularRecipes = () => {
                 </div>
                 <div style={{ color: "white" }}>
                   <div className={styles.timeNumber}>
-                    {recetas
-                      .filter(
-                        (receta) => receta.id == recipe.id % recetas.length
-                      )
-                      .map((rec) => rec.tiempo)}
+                    {recipe.tiempo}
                   </div>
                   <div className={styles.timeTag}>Min</div>
                 </div>
