@@ -34,5 +34,10 @@ export const arr = [
     id:7,
     name: "Comida",
     img: "images/burger.jpg"
+  },
+  {
+    id: 8, 
+    name: "China",
+    img: "https://imag.bonviveur.com/pollo-a-la-naranja.jpg"
   }
 ]

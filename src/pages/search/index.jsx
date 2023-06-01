@@ -10,18 +10,11 @@ import CategoryDisplay from "@/components/categoryDisplay/categoryDisplay"
 import IngredientSearch from "@/components/IngredientSearch/IngredientSearch"
 import { collection } from "firebase/firestore/lite"
 import { db } from "@/api/firebase"
+import { arr } from '@/components/categories/arr';
 
 const Search = () => {
     const { searchInfo } = useContext(SearchContext);
-    const categories = [
-        "bebidas", 
-        "postres",
-        "desayunos",
-        "comida",
-        "italiana",
-        "cenas",
-        "japonesa"
-    ];
+    const categories = arr.map(dato => dato.name.toLowerCase());
 
     return (
     <div style={{padding:"1.5rem", marginTop:"3rem"}}>
