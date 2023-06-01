@@ -79,7 +79,7 @@ const IngredientSearch = ({cat}) => {
 
       <div style={{fontSize:"1.2rem", fontWeight:"800", marginTop:"1rem"}}>Ingredientes</div>
       {ingredientes.filter(data => data.nombre.toLowerCase().includes(cat)).map( ingrediente => (
-        <Accordion sx={{marginTop:"1rem", border:"none", boxShadow:"0"}}>
+        <Accordion sx={{marginTop:"1rem", border:"none", boxShadow:"0"}} key = {`ing${ingrediente.id}`}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
@@ -91,7 +91,7 @@ const IngredientSearch = ({cat}) => {
         </AccordionSummary>
         <AccordionDetails>
         {recetas.filter(dato => dato.ingredientes.includes(ingrediente.id)).map((itemData) => (
-            <div key={`recetacategoria${itemData.id}`}>
+            <div key={`recetaIngrediente${itemData.id}`}>
              <ListItem>
               {/*console.log(itemData.id)*/}
               <Box style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-evenly', width:"100%", marginBottom:"5px", marginTop:"5px"}} onClick={() => handleClick(`/receta/${itemData.id}`)}>
