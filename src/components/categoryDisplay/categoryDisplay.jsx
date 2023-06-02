@@ -16,7 +16,7 @@ const CategoryDisplay = ({cat}) => {
   const [recetas, setRecetas] = useState([]);
   const collectionReference = collection(db, "Recetas");
 
-  console.log(cat);
+  //console.log(cat);
 
   const GetFilter = async() => {
     const q = query(collectionReference, where("categorias", "array-contains", cat));
@@ -29,7 +29,7 @@ const CategoryDisplay = ({cat}) => {
   }, [recetas])
 
   const handleClick = (link) => {
-    console.log(link)
+    //console.log(link)
     router.push(link);
   };
   
@@ -45,7 +45,7 @@ const CategoryDisplay = ({cat}) => {
         {recetas.map((itemData) => (
             <div key={`recetacategoria${itemData.id}`}>
              <ListItem>
-              {console.log(itemData.id)}
+              {/*console.log(itemData.id)*/}
               <Box style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-evenly', width:"100%", marginBottom:"5px", marginTop:"5px"}} onClick={() => handleClick(`/receta/${itemData.id}`)}>
                  <ListItemDecorator sx={{ alignSelf: "center", marginRight: "0.5rem" }}>
                    <Box  component="img" sx={{ width: "70px", height: "70px",maxHeight: "70px", borderRadius: '12px', backgroundImage: `url(${itemData.imagen})`, backgroundSize: "cover"}} />
