@@ -13,10 +13,13 @@ import styles from "./shoppingList.module.css";
 import BigButton from "@/atoms/buttonBig/buttonBig";
 import { useRouter } from 'next/router';
 import QR from "../QR/QR";
+import DiscountContext from "@/hooks/DiscountContext";
 
 
 function ShoppingList() {
   const { listInfo, setListInfo } = useContext(ListContext);
+  const { discountInfo, setDiscountInfo } = useContext(DiscountContext);
+
   const [precio, setPrecio] = useState(0);
   const [descuento, setDescuento] = useState(1)
   const [showQR, setShowQR] = useState(false)
@@ -37,7 +40,6 @@ function ShoppingList() {
 
   useEffect(() => {
     let a = precio * parseFloat(`0.${localStorage.getItem("discount").substring(0, localStorage.getItem("discount").length - 1)}`)
-    console.log(a)
     setDescuento(a)
   },[precio])
 
@@ -47,11 +49,28 @@ function ShoppingList() {
 
   const onClick = () => {
     setShowQR(true)
+    let a = []
+    for(let i = 0; i < discountInfo.length; i++){
+      if(localStorage.getItem('discount') == discountInfo[i].discount && localStorage.getItem('expires') == discountInfo[i].expires){
+        continue
+      }
+      else {
+        a.push(discountInfo[i])
+      }
+    }
+
+    setDiscountInfo(a)
+  };
+
+  const onClickEmpty = () => {
+    router.push('/discount')
   };
 
   return (
     <div>
-      { showQR ? <QR discount={localStorage.getItem("discount")} expires={localStorage.getItem("expires")}/> : 
+      { showQR ? <div
+        style={{padding:"1rem"}}
+      ><QR discount={localStorage.getItem("discount")} expires={localStorage.getItem("expires")}/></div> : 
       <>
       <div style={{fontWeight: "2000", fontSize: "22px", paddingLeft: "5%", paddingBottom: "0px"}}>
         Mi Lista
@@ -113,12 +132,23 @@ function ShoppingList() {
         <h1 className={styles.totalLetter}> Total: </h1>
         <h1 className={styles.totalLetter}> $ {total.toFixed(2)} </h1>
       </div>
-      <BigButton
-        color="main"
-        callback={onClick}
-        text="Utilizar Descuento"
-        sx={{ marginBottom: "10px" }}
-      />
+            
+      {
+        localStorage.getItem('discount') != 0 ? 
+        <BigButton
+          color="main"
+          callback={onClick}
+          text="Utilizar Descuento"
+          sx={{ marginBottom: "10px" }}
+        /> :
+        <BigButton
+          color="main"
+          callback={onClickEmpty}
+          text="Desbloquear Descuento"
+          sx={{ marginBottom: "10px" }}
+        />
+
+      }
     </>
       
       }</div>

@@ -87,6 +87,13 @@ function ARComponents(){
                         var x = localStorage.getItem("token");
                         for(let i = 0; i < dog.length; i++){
                             if (dog[i].Token === x){
+                                
+
+
+                                // CHECK IF USER HAS PLAYED IN THE LAST WEEK
+
+
+
                                 if(dog[i].Fecha){
                                     setEnded(1)
                                     if(document.getElementById("ARButton")){
@@ -152,7 +159,24 @@ function ARComponents(){
                 <div style={{width:"100vw", height:"100vh", backgroundColor:"white", display:"flex", justifyContent:"center", alignItems:"center", padding:"5rem 2rem"}}>
                     <div style={{height:"50%", marginTop:"-14rem"}}>
                         {ended === 0 && (<></>)}
-                        {ended === 1 && (<QR discount = {discount} expires = {expires}/>)}
+                        {ended === 1 && (
+                        <>
+                                                        
+                                                        
+                        <div style={{fontSize:"2rem", textAlign:"center", fontWeight:"900"}}>¡Gana descuentos en tus compras!</div>
+                        <div style={{display:"flex", justifyContent:"center", margin: "1.5rem 0"}}>
+                            <Image
+                                width={350}
+                                height={270}
+                                src = "/images/balloons.png"
+                            />
+                        </div>
+                        <div style={{textAlign:"center", padding:"1rem"}}>Rompe 10 Globos y gánate hasta 30% de descuento en tu próximo súper</div>
+                        <div style={{marginTop:"3rem", textAlign:"center", color:"grey"}}>Espera a la siguiente semana para desbloquear más descuentos </div>
+
+                        </>
+                        
+                        )}
 
                         {ended === 2 && (
 
@@ -167,7 +191,7 @@ function ARComponents(){
                                     src = "/images/balloons.png"
                                 />
                             </div>
-                            <div style={{textAlign:"center", padding:"1rem"}}>Rompe 15 Globos y gánate hasta 15% de descuento en tu proximo super</div>
+                            <div style={{textAlign:"center", padding:"1rem"}}>Rompe 15 Globos y gánate hasta 15% de descuento en tu próximo súper</div>
                             <div style={{marginTop:"3rem", textAlign:"center", color:"grey"}}>Aún no juegas tu partida del dia</div>
 
                             </>

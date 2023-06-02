@@ -4,6 +4,8 @@ import DownloadButton from "@/atoms/downloadButton/downloadButton";
 import InfoIcon from '@mui/icons-material/Info';
 
 const QR = ({discount, expires, callback = ()=>{}}) => {
+
+    
     
     return (
 
