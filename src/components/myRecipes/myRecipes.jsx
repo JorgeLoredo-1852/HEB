@@ -15,17 +15,16 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import { GetCollection } from "@/api/firebase";
 
 const MyRecipes = () => {
-
   function shuffle(arr) {
     let cur = arr.length;
-    while(cur != 0){
+    while (cur != 0) {
       let rand = Math.floor(Math.random() * cur);
       cur--;
       [arr[cur], arr[rand]] = [arr[rand], arr[cur]];
     }
     return arr;
   }
-  
+
   const router = useRouter();
 
   const themeM = useTheme();
@@ -34,9 +33,6 @@ const MyRecipes = () => {
   const downSm = useMediaQuery(themeM.breakpoints.down("sm"));
   const [cardNum, setCardNum] = useState(1.2);
   const recetas = shuffle(GetCollection("Recetas"));
-
-
-  
 
   useEffect(() => {
     if (downLg && downMd && downSm) {
@@ -58,7 +54,7 @@ const MyRecipes = () => {
     <>
       <div className={styles.container}>
         <div className={styles.title}>Prueba algo nuevo </div>
-        <Link href={"/receta/1"}>
+        <Link href={"/search"}>
           <div className={styles.btn}>Ver todo</div>
         </Link>
       </div>

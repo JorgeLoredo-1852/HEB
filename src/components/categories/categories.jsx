@@ -34,28 +34,46 @@ const Categories = () => {
     <div style={{ marginBottom: "1rem" }}>
       <div className={styles.container}>
         <div className={styles.title}>Categorias</div>
-        <Link href={""}>
+        <Link href={"/search"}>
           <div className={styles.btn}>Ver todo</div>
         </Link>
       </div>
-      <div style={{height: "17rem"}}>
-      <Swiper
-        slidesPerView={3}
-        grid={{rows: 2}}
-        spaceBetween={10}
-        modules={[Grid]}
-        style={{height:"100%", width:"100%"}}
-        className={styles.swiper}
-      >
-        {arr.map((category) => (
-          <SwiperSlide key={category.id} onClick={()=>{selectCategory(category.name)}} className={styles.swiperSlide}>
-              <div style={{width:"100%", height:"100%", position: "relative", cursor:"pointer"}} >
-                <div className={styles.swiperOverlay} style={{backgroundImage: `linear-gradient(to right bottom, rgba(0,0,0,0.3), rgba(0, 0, 0, 0.3)), url(${category.img})`}}></div>
+      <div style={{ height: "17rem" }}>
+        <Swiper
+          slidesPerView={3}
+          grid={{ rows: 2 }}
+          spaceBetween={10}
+          modules={[Grid]}
+          style={{ height: "100%", width: "100%" }}
+          className={styles.swiper}
+        >
+          {arr.map((category) => (
+            <SwiperSlide
+              key={category.id}
+              onClick={() => {
+                selectCategory(category.name);
+              }}
+              className={styles.swiperSlide}
+            >
+              <div
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  position: "relative",
+                  cursor: "pointer",
+                }}
+              >
+                <div
+                  className={styles.swiperOverlay}
+                  style={{
+                    backgroundImage: `linear-gradient(to right bottom, rgba(0,0,0,0.3), rgba(0, 0, 0, 0.3)), url(${category.img})`,
+                  }}
+                ></div>
               </div>
               <div className={styles.swiperTitle}>{category.name}</div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
     </div>
   );

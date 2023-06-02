@@ -46,7 +46,7 @@ const PopularRecipes = () => {
     <>
       <div className={styles.container}>
         <div className={styles.title}>Recetas más Populares</div>
-        <Link href={"/receta/1"}>
+        <Link href={"/search"}>
           <div className={styles.btn}>Ver todo</div>
         </Link>
       </div>
@@ -73,17 +73,13 @@ const PopularRecipes = () => {
                   backgroundImage: `linear-gradient(to right bottom, rgba(0,0,0,0.3), rgba(0, 0, 0, 0.3)), url(${recipe.imagen})`,
                 }}
               ></div>
-              <div className={styles.swiperTitle}>
-                {recipe.nombre}
-              </div>
+              <div className={styles.swiperTitle}>{recipe.nombre}</div>
               <div className={styles.cookingTime}>
                 <div className={styles.timeContainer}>
                   <AccessTimeIcon fontSize="medium" sx={{ color: "white" }} />
                 </div>
                 <div style={{ color: "white" }}>
-                  <div className={styles.timeNumber}>
-                    {recipe.tiempo}
-                  </div>
+                  <div className={styles.timeNumber}>{recipe.tiempo}</div>
                   <div className={styles.timeTag}>Min</div>
                 </div>
               </div>
