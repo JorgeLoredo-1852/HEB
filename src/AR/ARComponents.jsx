@@ -5,7 +5,8 @@ import Image from 'next/image';
 import { Grid, Typography, Box } from "@mui/material";
 import DownloadButton from "@/atoms/downloadButton/downloadButton";
 import DownloadIcon from '@mui/icons-material/Download';
-
+import InfoIcon from '@mui/icons-material/Info';
+import { useRouter } from "next/router";
 const requestOptionsGET = {
     method: 'POST',
     headers: { 
@@ -20,10 +21,16 @@ const requestOptionsGET = {
 
 function ARComponents(){
     const [ARExp, setARExp] = useState(null) 
-    const [ended, setEnded] = useState(false)
+    const [ended, setEnded] = useState(0)
     const [userToken, setUserToken] = useState("")
     const [oneUser, setOneUser] = useState(0)
     const [tab, setTab] = useState(0)
+
+    const [discount, setDiscount] = useState(null)
+    const [expires, setExpires] = useState(null)
+    const router = useRouter()
+
+
 
     useEffect(() => {
 
@@ -64,6 +71,13 @@ function ARComponents(){
     }, [])
 
     useEffect(() => {
+        
+        setDiscount(localStorage.getItem("discount"))
+        setExpires(localStorage.getItem("expires"))
+
+    }, [])
+
+    useEffect(() => {
         if(!ended){
             const intervalId = setInterval(() => {  //assign interval to a variable to clear it.
                 fetch('https://josecarl0s1.pythonanywhere.com/usuarios')
@@ -74,7 +88,7 @@ function ARComponents(){
                         for(let i = 0; i < dog.length; i++){
                             if (dog[i].Token === x){
                                 if(dog[i].Fecha){
-                                    setEnded(true)
+                                    setEnded(1)
                                     if(document.getElementById("ARButton")){
                                         document.getElementById("ARButton").remove();
                                     }
@@ -108,8 +122,21 @@ function ARComponents(){
             ARExp.setupXR()
         }
     }, [ARExp])
+
+    const getToday = () => {
+        const today = new Date();
+        today.setDate(today.getDate() + 7);
+        const d = "dd/mm/yyyy"
+        const a = d.replace('mm', today.getMonth() + 1)
+    .replace('yyyy', today.getFullYear())
+	.replace('dd', today.getDate());
+        return a
+    }
       
-    
+    const onClick = () => {
+        localStorage.setItem('currDiscount', localStorage.getItem("discount"))
+        router.push("/list")
+    }
 
     return (
             <div
@@ -124,25 +151,14 @@ function ARComponents(){
             >
                 <div style={{width:"100vw", height:"100vh", backgroundColor:"white", display:"flex", justifyContent:"center", alignItems:"center", padding:"5rem 2rem"}}>
                     <div style={{height:"50%", marginTop:"-14rem"}}>
-                        {ended ? <>
-                        
-                            <Grid container style={{display:"flex", width:"100%", justifyContent:"center"}}>
-            <Grid xs = {12} sx= {{ marginTop: "70px", marginLeft:"20px", marginRight:"20px" }} >
-                <Typography variant="h5" fontWeight="bolder" style={{textAlign:"center"}}>¡Felicidades ganaste un 10% descuento!</Typography>
-            </Grid>
-            <Box component="img" sx={{height: 300, width: 300, display:"flex"}} alt="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/QR_code_for_mobile_English_Wikipedia.svg/1200px-QR_code_for_mobile_English_Wikipedia.svg.png" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/QR_code_for_mobile_English_Wikipedia.svg/1200px-QR_code_for_mobile_English_Wikipedia.svg.png"/>
-            <Grid xs = {12} sx= {{marginBottom: "30px", marginTop: "10px"}} >
-                <Typography style={{textAlign:"center"}}>Presenta este Codigo QR en la caja al momento de hacer tu super</Typography>
-            </Grid>
-            <Grid xs = {12} sx= {{marginRight:"15px", marginLeft:"15px"}} >
-                <DownloadButton color="secondary" position="relative" text="Descargar Codigo QR" icon={<DownloadIcon sx={{fontSize: '1.5rem', marginRight:"5px"}}/>}/>
-            </Grid>
-        </Grid>
-                        
-                        </> : 
+                        {ended === 0 && (<></>)}
+                        {ended === 1 && (<QR discount = {discount} expires = {expires}/>)}
+
+                        {ended === 2 && (
+
                             <>
-                            
-                            
+                                                        
+                                                        
                             <div style={{fontSize:"2rem", textAlign:"center", fontWeight:"900"}}>¡Gana descuentos en tus compras!</div>
                             <div style={{display:"flex", justifyContent:"center", margin: "1.5rem 0"}}>
                                 <Image
@@ -154,7 +170,9 @@ function ARComponents(){
                             <div style={{textAlign:"center", padding:"1rem"}}>Rompe 15 Globos y gánate hasta 15% de descuento en tu proximo super</div>
                             <div style={{marginTop:"3rem", textAlign:"center", color:"grey"}}>Aún no juegas tu partida del dia</div>
 
-                        </>}
+                            </>
+
+                        )}
                     </div>
                 </div>
             </div>

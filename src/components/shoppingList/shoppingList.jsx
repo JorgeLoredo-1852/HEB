@@ -1,7 +1,7 @@
 import { Box } from "@mui/material";
 import List from "@mui/joy/List";
 import ListItem from "@mui/joy/ListItem";
-import React from "react";
+import React, { useDebugValue } from "react";
 import ListItemDecorator from "@mui/joy/ListItemDecorator";
 import Stack from "@mui/joy/Stack";
 import ListDivider from "@mui/joy/ListDivider";
@@ -12,11 +12,14 @@ import { useEffect } from "react";
 import styles from "./shoppingList.module.css";
 import BigButton from "@/atoms/buttonBig/buttonBig";
 import { useRouter } from 'next/router';
+import QR from "../QR/QR";
 
 
 function ShoppingList() {
   const { listInfo, setListInfo } = useContext(ListContext);
   const [precio, setPrecio] = useState(0);
+  const [descuento, setDescuento] = useState(1)
+  const [showQR, setShowQR] = useState(false)
 
   const [data, setData] = useState({});
   useEffect(() => {
@@ -32,17 +35,24 @@ function ShoppingList() {
     setPrecio(avg);
   }, [listInfo]);
 
-  const descuento = precio * 0.15;
+  useEffect(() => {
+    let a = precio * parseFloat(`0.${localStorage.getItem("discount").substring(0, localStorage.getItem("discount").length - 1)}`)
+    console.log(a)
+    setDescuento(a)
+  },[precio])
+
   const total = precio - descuento;
 
   const router = useRouter();
 
   const onClick = () => {
-    router.push("/");
+    setShowQR(true)
   };
 
   return (
     <div>
+      { showQR ? <QR discount={localStorage.getItem("discount")} expires={localStorage.getItem("expires")}/> : 
+      <>
       <div style={{fontWeight: "2000", fontSize: "22px", paddingLeft: "5%", paddingBottom: "0px"}}>
         Mi Lista
       </div>
@@ -106,10 +116,12 @@ function ShoppingList() {
       <BigButton
         color="main"
         callback={onClick}
-        text="Desbloquear descuentos"
+        text="Utilizar Descuento"
         sx={{ marginBottom: "10px" }}
       />
-    </div>
+    </>
+      
+      }</div>
 
   );
 }

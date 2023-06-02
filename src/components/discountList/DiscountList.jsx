@@ -1,6 +1,7 @@
 import BigButton from "@/atoms/buttonBig/buttonBig";
 import { List } from "@mui/material";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 const DiscountList = ({info}) => {
     const onClick = () => {
@@ -19,7 +20,12 @@ const DiscountList = ({info}) => {
 }
 
 const DiscountCard = ({details}) => {
+    const router = useRouter();
+
     const onClick = () => {
+        router.push("/list");
+        localStorage.setItem("discount", details.discount)
+        localStorage.setItem("expires", details.expires)
 
     }
     return (
@@ -34,7 +40,7 @@ const DiscountCard = ({details}) => {
             <div style={{}}>
                 <div style={{fontSize:"0.9rem", color:"white"}}><span style={{fontWeight:"800"}}>Expira: </span>{details.expires}</div>
                 <div onClick={onClick} style={{cursor:"pointer", marginTop:"0.5rem", color:"#DD2B22", backgroundColor:"white", fontSize:"0.9rem", padding:"0.3rem 1.5rem", width:"fit-content", borderRadius:"100px"}}>
-                    Ver mas
+                    Usar
                 </div>
             </div>
         </div>
