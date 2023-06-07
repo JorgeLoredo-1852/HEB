@@ -7,10 +7,10 @@ import { useContext } from "react";
 
 const Profile = () => {
   const { discountInfo, setDiscountInfo } = useContext(DiscountContext);
-  const [isEmptyList, setEmptyList] = useState(false)
+  console.log(discountInfo)
   
   return (<>
-    {isEmptyList ? <DiscountEmpty/> : <DiscountList info = {discountInfo} />}
+    {discountInfo.length === 0 ? <DiscountEmpty/> : <DiscountList info = {discountInfo} />}
   </>)
 };
 

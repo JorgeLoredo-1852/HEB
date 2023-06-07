@@ -7,6 +7,8 @@ import DownloadButton from "@/atoms/downloadButton/downloadButton";
 import DownloadIcon from '@mui/icons-material/Download';
 import InfoIcon from '@mui/icons-material/Info';
 import { useRouter } from "next/router";
+import { useContext } from "react";
+import DiscountContext from "@/hooks/DiscountContext";
 const requestOptionsGET = {
     method: 'POST',
     headers: { 
@@ -29,6 +31,9 @@ function ARComponents(){
     const [discount, setDiscount] = useState(null)
     const [expires, setExpires] = useState(null)
     const router = useRouter()
+
+    const { discountInfo, setDiscountInfo } = useContext(DiscountContext);
+
 
 
 
@@ -91,7 +96,7 @@ function ARComponents(){
 
 
                                 // CHECK IF USER HAS PLAYED IN THE LAST WEEK
-
+                                
 
 
                                 if(dog[i].Fecha){
@@ -130,15 +135,52 @@ function ARComponents(){
         }
     }, [ARExp])
 
-    const getToday = () => {
+    const addToDiscountList = () => {
+        let a = []
+        for(let i = 0; i < discountInfo.length; i++){
+            a.push(discountInfo[i])
+        }
+
         const today = new Date();
         today.setDate(today.getDate() + 7);
         const d = "dd/mm/yyyy"
-        const a = d.replace('mm', today.getMonth() + 1)
+        const b = d.replace('mm', today.getMonth() + 1)
     .replace('yyyy', today.getFullYear())
 	.replace('dd', today.getDate());
-        return a
+
+        a.push({
+            discount: "15%",
+            expires: b
+        },)
+    
+        setDiscountInfo(a)
     }
+    
+    useEffect(() => {
+        if(ended == 1){
+            let a = []
+            const today = new Date();
+            today.setDate(today.getDate() + 7);
+            const d = "dd/mm/yyyy"
+            const b = d.replace('mm', today.getMonth() + 1)
+                .replace('yyyy', today.getFullYear())
+                .replace('dd', today.getDate());
+            
+
+            for(let i = 0; i < discountInfo.length; i++){
+                if(discountInfo[i].discount != "15%" && discountInfo[i].expires != b){
+                    a.push(discountInfo[i])
+                }
+            
+        }
+        a.push({
+            discount: "15%",
+            expires: b
+        })
+    
+        setDiscountInfo(a)
+        }
+    },[ended])
       
     const onClick = () => {
         localStorage.setItem('currDiscount', localStorage.getItem("discount"))
@@ -158,29 +200,9 @@ function ARComponents(){
             >
                 <div style={{width:"100vw", height:"100vh", backgroundColor:"white", display:"flex", justifyContent:"center", alignItems:"center", padding:"5rem 2rem"}}>
                     <div style={{height:"50%", marginTop:"-14rem"}}>
-                        {ended === 0 && (<></>)}
-                        {ended === 1 && (
-                        <>
-                                                        
-                                                        
-                        <div style={{fontSize:"2rem", textAlign:"center", fontWeight:"900"}}>¡Gana descuentos en tus compras!</div>
-                        <div style={{display:"flex", justifyContent:"center", margin: "1.5rem 0"}}>
-                            <Image
-                                width={350}
-                                height={270}
-                                src = "/images/balloons.png"
-                            />
-                        </div>
-                        <div style={{textAlign:"center", padding:"1rem"}}>Rompe 10 Globos y gánate hasta 30% de descuento en tu próximo súper</div>
-                        <div style={{marginTop:"3rem", textAlign:"center", color:"grey"}}>Espera a la siguiente semana para desbloquear más descuentos </div>
-
-                        </>
+                        {ended === 0 && (
                         
-                        )}
-
-                        {ended === 2 && (
-
-                            <>
+                        <>
                                                         
                                                         
                             <div style={{fontSize:"2rem", textAlign:"center", fontWeight:"900"}}>¡Gana descuentos en tus compras!</div>
@@ -196,6 +218,30 @@ function ARComponents(){
 
                             </>
 
+                        )}
+                        {ended === 1 && (
+                        <>
+                                                        
+                                                        
+                        <div style={{fontSize:"2rem", textAlign:"center", fontWeight:"900"}}>¡Gana descuentos en tus compras!</div>
+                        <div style={{display:"flex", justifyContent:"center", margin: "1.5rem 0"}}>
+                            <Image
+                                width={350}
+                                height={270}
+                                src = "/images/balloons.png"
+                            />
+                        </div>
+                        <div style={{textAlign:"center", padding:"1rem"}}>Rompe 10 Globos y gánate hasta 30% de descuento en tu próximo súper</div>
+                        <div style={{marginTop:"3rem", textAlign:"center", color:"grey"}}>Espera a la siguiente semana para desbloquear más descuentos </div>
+
+                            {
+
+                                () => addToDiscountList()
+
+                            }
+
+                        </>
+                        
                         )}
                     </div>
                 </div>

@@ -1,8 +1,10 @@
 import BigButton from "@/atoms/buttonBig/buttonBig";
 import { List } from "@mui/material";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 const DiscountEmpty = () => {
+  const router = useRouter();
     const onClick = () => {
         router.push("/prizes");
       };
