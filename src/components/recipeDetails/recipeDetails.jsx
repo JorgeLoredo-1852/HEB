@@ -163,7 +163,7 @@ const RecipeDetails = ({ foodLists, dif, tiempo }) => {
         <Box sx={{ backgroundColor: 'white', borderRadius: '10px', width: '80vw', height: '5rem', p: 3, display: 'flex', alignItems: 'center', marginTop: 2 }}>
           <Stack direction='row' spacing={2}>
             <CheckCircleIcon style ={{ color: '#04BD6C', alignSelf: 'center' }}/>
-            <Box>Todos los ingredientes se han agregado exitosamente</Box>
+            <Box>Ingredientes Agregados</Box>
           </Stack>
         </Box>
         
