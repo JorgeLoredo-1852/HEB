@@ -37,7 +37,7 @@ const CategoryDisplay = ({cat}) => {
     <>
       <div style={{ display: 'flex', width: '100%', justifyContent: 'center'}}>
         <Box style={{borderRadius: '12px', marginLeft: '12px', marginRight: '12px',  width: '100%', height: '12rem', overflow: 'hidden', display: 'flex', alignItems: 'center', position: 'relative'}}>
-          <Box component='img' src={recetas.length>0?recetas[Math.floor(Math.random() * recetas.length)].imagen:'images/burger.jpg'} style = {{ width: 'inherit'}}/>
+          <Box component='img' src={recetas.length>0?recetas[Math.floor(Math.random() * recetas.length)].imagen : 'images/grey.jpg'} style = {{ width: 'inherit'}}/>
           <Box style={{ color: '#FFFFFF', position: 'absolute', bottom: '0', left: '0', marginLeft: '20px', marginBottom: '15px', textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)',  fontSize: '20px', textTransform: 'capitalize'}}>{cat}</Box>
         </Box>
       </div>
