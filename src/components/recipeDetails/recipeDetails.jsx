@@ -1,14 +1,26 @@
 import BigButton from "@/atoms/buttonBig/buttonBig";
 import ListContext from "@/hooks/ListContext";
 import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
-import { Grid } from "@mui/material";
+import { Grid, Snackbar, Grow, Stack, Box } from "@mui/material";
 import { useState, useEffect, useContext } from "react";
 import SignalCellularAltIcon from "@mui/icons-material/SignalCellularAlt";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+
+function SlideTransition(props) {
+  return <Grow {...props} />;
+}
 
 const RecipeDetails = ({ foodLists, dif, tiempo }) => {
   const { listInfo, setListInfo } = useContext(ListContext);
   const [data, setData] = useState({});
+  const [ state, setState ] = useState(false);
+  const vertical = 'top';
+  const horizontal = 'center';
+
+  const handleClose = () => {
+    setState(false);
+  };
 
   //console.log(dif);
   //console.log(tiempo);
@@ -29,6 +41,7 @@ const RecipeDetails = ({ foodLists, dif, tiempo }) => {
       }
     });
     setListInfo({ ...listInfo, ...data });
+    setState(true);
   };
 
   //console.log(data);
@@ -139,6 +152,22 @@ const RecipeDetails = ({ foodLists, dif, tiempo }) => {
           />
         </Grid>
       </Grid>
+      <Snackbar
+        anchorOrigin={{vertical, horizontal}}
+        open={state}
+        onClose={handleClose}
+        TransitionComponent={SlideTransition}
+        key={SlideTransition}
+        autoHideDuration={2000}
+      >
+        <Box sx={{ backgroundColor: 'white', borderRadius: '10px', width: '80vw', height: '5rem', p: 3, display: 'flex', alignItems: 'center', marginTop: 2 }}>
+          <Stack direction='row' spacing={2}>
+            <CheckCircleIcon style ={{ color: '#04BD6C', alignSelf: 'center' }}/>
+            <Box>Todos los ingredientes se han agregado exitosamente</Box>
+          </Stack>
+        </Box>
+        
+      </Snackbar>
     </div>
   );
 };
