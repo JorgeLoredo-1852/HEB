@@ -16,6 +16,8 @@ const CategoryDisplay = ({cat}) => {
   const [recetas, setRecetas] = useState([]);
   const collectionReference = collection(db, "Recetas");
 
+  //console.log(cat);
+
   const GetFilter = async() => {
     const q = query(collectionReference, where("categorias", "array-contains", cat));
     const data = await(getDocs(q))
@@ -27,7 +29,7 @@ const CategoryDisplay = ({cat}) => {
   }, [recetas])
 
   const handleClick = (link) => {
-    console.log(link)
+    //console.log(link)
     router.push(link);
   };
   
@@ -35,7 +37,7 @@ const CategoryDisplay = ({cat}) => {
     <>
       <div style={{ display: 'flex', width: '100%', justifyContent: 'center'}}>
         <Box style={{borderRadius: '12px', marginLeft: '12px', marginRight: '12px',  width: '100%', height: '12rem', overflow: 'hidden', display: 'flex', alignItems: 'center', position: 'relative'}}>
-          <Box component='img' src={recetas.length>0?recetas[Math.floor(Math.random() * recetas.length)].imagen:'images/burger.jpg'} style = {{ width: 'inherit'}}/>
+          <Box component='img' src={recetas.length>0?recetas[Math.floor(Math.random() * recetas.length)].imagen : 'images/grey.jpg'} style = {{ width: 'inherit'}}/>
           <Box style={{ color: '#FFFFFF', position: 'absolute', bottom: '0', left: '0', marginLeft: '20px', marginBottom: '15px', textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)',  fontSize: '20px', textTransform: 'capitalize'}}>{cat}</Box>
         </Box>
       </div>
@@ -43,7 +45,7 @@ const CategoryDisplay = ({cat}) => {
         {recetas.map((itemData) => (
             <div key={`recetacategoria${itemData.id}`}>
              <ListItem>
-              {console.log(itemData.id)}
+              {/*console.log(itemData.id)*/}
               <Box style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-evenly', width:"100%", marginBottom:"5px", marginTop:"5px"}} onClick={() => handleClick(`/receta/${itemData.id}`)}>
                  <ListItemDecorator sx={{ alignSelf: "center", marginRight: "0.5rem" }}>
                    <Box  component="img" sx={{ width: "70px", height: "70px",maxHeight: "70px", borderRadius: '12px', backgroundImage: `url(${itemData.imagen})`, backgroundSize: "cover"}} />

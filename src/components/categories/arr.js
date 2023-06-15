@@ -3,51 +3,41 @@ export const arr = [
   {
     id: 1,
     name: "Desayunos",
-    img: "/images/food.png"
+    img: "https://cdn7.kiwilimon.com/recetaimagen/34034/39643.jpg"
   },
   {
     id: 2,
     name: "Cenas",
-    img: "/images/mole.png"
+    img: "https://pescadoszaragozaextremadura.es/wp-content/uploads/2023/03/salmon-a-la-parrilla-con-vegetales-asados.jpg"
   },
   {
     id: 3,
-    name: "Antojitos",
-    img: "/images/pozole.jpg"
+    name: "Bebidas",
+    img: "https://static.onecms.io/wp-content/uploads/sites/21/2017/06/27/margarita-clasica-2000.jpg" 
   },
   {
     id: 4,
-    name: "Comida",
-    img: "/images/cochinita.jpeg"
+    name: "Postres",
+    img: "https://images.cookforyourlife.org/wp-content/uploads/2020/06/Dark-Chocolate-Brownies-shutterstock_112430981.jpg"
   },
   {
     id: 5,
-    name: "Mexicana",
-    img: "/images/pescado.jpg"
+    name: "Japonesa",
+    img: "https://www.ahumadosdominguez.es/wp-content/uploads/2022/06/makis-salmon-ahumado-aguacate-sesamo.jpg"
   },
   {
     id: 6,
     name: "Italiana",
-    img: "/images/tlayuda.jpg"
+    img: "https://www.annarecetasfaciles.com/files/pizza-margarita-1-scaled.jpg"
   },
   {
-    id: 7,
-    name: "Americana",
-    img: "/images/burger.jpg"
+    id:7,
+    name: "Comida",
+    img: "images/burger.jpg"
   },
   {
-    id: 8,
-    name: "Vegano",
-    img: "/images/enchiladas.jpg"
-  },
-  {
-    id: 9,
-    name: "Aperitivos",
-    img: "/images/pozole.jpg"
-  },
-  {
-    id: 10,
-    name: "Bebidas",
-    img: "/images/enchiladas.jpg"
+    id: 8, 
+    name: "China",
+    img: "https://imag.bonviveur.com/pollo-a-la-naranja.jpg"
   }
 ]

@@ -2,6 +2,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import SearchIcon from '@mui/icons-material/Search';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import PersonIcon from '@mui/icons-material/Person';
+import LocalActivityIcon from '@mui/icons-material/LocalActivity';
 
 export const tabs = [
     {
@@ -23,9 +24,9 @@ export const tabs = [
         link: "/prizes"
     },
     {
-        label: "Perfil",
-        value: "profile",
-        icon: <PersonIcon/>,
-        link: "/profile"
+        label: "Descuento",
+        value: "discount",
+        icon: <LocalActivityIcon/>,
+        link: "/discount"
     }
 ]

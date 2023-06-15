@@ -24,10 +24,10 @@ export default function SearchCategories() {
 
 
   return (
-    <Box sx={{ width: '100%', marginLeft: "28px"}}>
-      <Grid container columnSpacing={{ xs: 4, sm: 4, md: 0 }} >
+    <Box sx={{ width: '100%', marginLeft: "28px", mb:5 }}>
+      <Grid container columnSpacing={{ xs: 4, sm: 4, md: 0 }}  >
        {arr.map((num) => ( 
-       <Grid CardMedia xs={5} sx={{ mx: "10px"}} onClick={() => selectCategory(num.name)}>
+       <Grid CardMedia xs={5} sx={{ mx: "10px" }} onClick={() => selectCategory(num.name)}>
                 <CardMedia
                 component="img"
                 height="120"
